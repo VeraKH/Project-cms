@@ -12,7 +12,7 @@ body {
 }
 
 #page {
-    max-width: 1200px;
+    width: 100%;
     margin:  0 auto;
     position: relative;
 }
@@ -34,7 +34,7 @@ a.btn:hover {
 
 h1 {
   margin: 0 0 1em 0;
-  font-size: 2.7em; font-weight: 700;
+  font-size: 3.2em; font-weight: 700;
 }
 
 h2 {
@@ -61,11 +61,14 @@ a { color: #007eff; }
 /*Header*/
 
 header { 
-    height: 430px;
-  /* background: #ADE28D url(../img/bg1.png) repeat center bottom;*/
-     /*background: #cf0004 url(../img/banner_1200.jpg) repeat center bottom;
-    position: relative;*/
+    height: 540px;
+    /*background: #cf0004 url(../img/banner_1200.jpg) repeat center bottom; */
+     position: relative;
      background: #c10000 url(../img/bg1.png) repeat center bottom;
+}
+
+header.admin {
+  height: 150px;
 }
 
 header a.logo {
@@ -89,6 +92,13 @@ header div.hero {
   left: 55%;
 }
 
+header.admin div.hero {
+  position:  absolute;
+  width: 30%;
+  top: 85px;
+  left: 70%;
+}
+
 header div.hero h1{
   line-height: 1em;
   margin: 0 0 30px 0;
@@ -110,8 +120,7 @@ section::after {
 /*Section - main */
 
 section.main {
-  margin-top: 20px;
-  margin-bottom: 30px;
+  margin: 10px 0 40px 0;
   padding: 0;
 }
 
@@ -144,22 +153,28 @@ section.main aside .content.stratagy {
 }
 
 section.main aside .content.community {
-  background-image: url(../img/icon_marker.svg);
+  background-image: url(../img/icon_gear.svg);
 }
 
 section.main aside .content.tools {
-  background-image: url(../img/icon_gear.svg);
+  background-image: url(../img/icon_marker.svg);
 }
 
 
 /*Section - atmosphere */
 
 section.atmosphere {
-  /*background-color: #cc6633;*/
-  background-color: #ff4c4c ;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  color: #fff;
+  background-color: #e1dede;
+/*  background-color: #ff4c4c ;*/
+  padding-top: 70px;
+  padding-bottom: 40px;
+  color: #555;
+}
+
+section.atmosphere a.btn {
+  color: #cc6633;
+  font-weight: bold;
+  border-color: #cc6633;
 }
 
 section.atmosphere article  {
@@ -174,8 +189,8 @@ section.atmosphere article  {
 section.how-to {
   background-color: #e1dede;
   /*background-color: #eee9d9;*/
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 60px;
+  padding-bottom: 80px;
   position: relative;
 }
 
@@ -255,10 +270,38 @@ section.how-to blockquote p.credit::before {
   left: 0;
 }
 
+
+/*Section Inside */
+
+section.inside {
+  background-color: #fff;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+section.inside article  {
+      padding: 0 20px 0 0;
+      min-height: 620px;
+}
+
+section.inside article h2 {
+  font-size: 2.4em;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+section.inside article p {
+  font-size: 1.1em;
+  margin-bottom: 40px;
+}
+
+section.inside article img {
+  padding: 0 30px 15px 40px;
+}
+
 /*Navigation*/
 
 nav {
-/*  background-color: rgba(0, 0, 0, .65);*/
   background-color: rgba(103,103,103, .5);
   position: absolute;
   top: 0; 
@@ -267,11 +310,16 @@ nav {
   width: 100%;
 }
 
+nav.admin-panel {
+  padding: 20px 0 0 0;
+}
+
 nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
+
 
 nav ul li:hover {
   background-color: #2b0306;
@@ -310,6 +358,10 @@ nav ul ul li {
   position: relative;
 }
 
+nav.admin ul ul li {
+  position: relative;
+}
+
 nav ul ul ul {
   left: 100%;
   top: 0px;
@@ -318,6 +370,7 @@ nav ul ul ul {
 /*top-level*/
 
 nav > ul { padding-left: 200px; }
+
 
 nav > ul > li { float: left; }
 
@@ -386,7 +439,7 @@ footer a:hover {
   /*header */
 
   header div.hero { left:  56%; }
-  header div.hero h1 { margin-bottom: 20px; }
+  header div.hero h1 { margin-bottom: 15px; }
 
   /*Section Atmosphere */
 
@@ -395,7 +448,7 @@ footer a:hover {
     background-size: 375px auto;
   }
 
-}
+
 
 @media screen and (max-width: 820px) {
       h1 { font-size:  2.2em; }
@@ -418,6 +471,7 @@ header div.hero { left:  48%; }
 
   section.how-to blockquote p.quote {font-size: 1.1em; line-height: 1.2em;}
   section.how-to blockquote p.credit {font-size: .8em; }
+
 
 }
 /*Meda query for 760px */

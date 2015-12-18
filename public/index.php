@@ -1,49 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home | JClass</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">    
-     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">                      
-    <link href="css/screen.css" rel="stylesheet" type="text/css" medea= "screen"/>      
-     <link href="css/print.css" rel="stylesheet" type="text/css" medea= "all"/>        
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>          
-</head>
-<body> 
-
-        <div id="page">
-            
+<?php
+include ("head.php");
+?>
         <header>
             <a class= "logo" title="JClass" href="http://jclass.com "><span>JClass</span></a>
             <div class="hero">
-                    <h1>All you need to learn Japanese</h1>
+                    <h1>All you need is to learn Japanese</h1>
                     <a class="btn" ttitle="Get lessons from top teachers" href="#"><span>Get Lessons From</span> Top Teachers</a>
             </div>
         </header>
 
         <section class = "main">
-            <aside>
-                <div class = "content stratagy">
-                    <h3><a href="#">What's inside the course</a></h3>
-                    <p>Lorem ipsum dolor sit amet, consect etuer adipiscing elit. <a href="http://codifydesign.com">Morbi commodo</a>, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis.</p>
-                </div>
-            </aside>
              <aside>
                 <div class = "content community">
-                    <h3><a href="#">How we teach</a></h3>
+                    <h3><a href="#atmo-anc">How we teach</a></h3>
                     <p>Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Lorem ipsum dolor sit amet, consect.</p>
                 </div>
             </aside>
+            
+            <aside>
+                <div class = "content stratagy">
+                    <h3><a href="#inside-course">What's inside the course</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consect etuer adipiscing elit. <a href="http://codifydesign.com">Morbi commodo</a>, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis.</p>
+                </div>
+            </aside>
+            
              <aside>
                 <div class = "content tools">
-                    <h3><a href="#">Find your community</a></h3>
+                    <h3><a href="#tools">Find your community</a></h3>
                     <p>Nullam sit amet enim. Lorem ipsum dolor sit amet, consect etuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci rhoncus neque, id pulvinar odio.</p>
                 </div>
             </aside>
         </section>
 
-        <section class = "atmosphere">
+         <section class = "atmosphere" id="atmo-anc">
             <article>
                 <h2>Offering the best learning tools</h2>
                 <p>Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Lorem ipsum dolor sit amet etuer adipiscing elit.  Pulvinar odio lorem non turpis. Nullam sit amet enim lorem.</p>
@@ -73,6 +62,18 @@
             <p class="credit"><strong>Author Name</strong><br><em> Business Title</em><br> Company</p>
             </blockquote>
         </section>
+
+         <section class = "inside" id="inside-course">
+            <article>
+                <h2>What's inside the course</h2>
+                <p>Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Lorem ipsum dolor sit amet etuer adipiscing elit.  Pulvinar odio lorem non turpis. Nullam sit amet enim lorem. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Lorem ipsum dolor sit amet etuer adipiscing elit.  Pulvinar odio lorem non turpis. Nullam sit amet enim lorem.Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis.  Lorem ipsum dolor sit amet etuer adipiscing elit.  Pulvinar odio lorem non turpis. Nullam sit amet enim lorem.</p>
+                <img alt="Your account" src="img/photo_lighting.jpg"/>
+                <img alt="Your account" src="img/photo_lighting.jpg"/>
+                <img alt="Your account" src="img/photo_lighting.jpg"/>
+                
+            </article>
+        </section>
+
 
         <nav>
                 <ul>
@@ -119,20 +120,14 @@
                     </li>
                     </li>
                      <li>
-                        <a title = "Contact Us" href="#">Contact Us</a>
+                        <a title = "Contact Us" href="#footer-anc">Contact Us</a>
+                    </li>
+                     <li>
+                        <a title = "Login" href="#"Log In</a>
                     </li>
                 </ul>
         </nav>
 
-        <footer>
-               &copy; JCLASS
-                    <div class="content">
-                    <a title="Privacy Policy" href="#">Privacy Policy</a>
-                    <a title="terms of Service" href="#">Terms of Use</a>
-                    </div>
-        </footer>
-
-        </div>
-
-</body>
-</html>
+    <?php
+    include ("footer.php");
+    ?>
