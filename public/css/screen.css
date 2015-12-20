@@ -17,6 +17,10 @@ body {
     position: relative;
 }
 
+#page ul {
+    list-style: none;
+}
+
 a.btn {
   font-size: 1.2em;
   text-decoration: none;
@@ -315,7 +319,6 @@ nav.admin-panel {
 }
 
 nav ul {
-  list-style: none;
   margin: 0;
   padding: 0;
 }

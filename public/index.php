@@ -1,5 +1,5 @@
 <?php
-include ("head.php");
+include ("../includes/layouts/head.php");
 ?>
         <header>
             <a class= "logo" title="JClass" href="http://jclass.com "><span>JClass</span></a>
@@ -129,5 +129,5 @@ include ("head.php");
         </nav>
 
     <?php
-    include ("footer.php");
+       include ("../includes/layouts/footer.php");
     ?>
