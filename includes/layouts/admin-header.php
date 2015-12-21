@@ -12,15 +12,7 @@ include ("head.php");
         <nav class="admin-panel">
                 <ul>
                     <li>
-                        <a title = "Manage Website Content" href="../public/manage_content.php" area-haspopup="true">Manage Website Content</a>
-                             <ul>
-                                 <li>
-                                     <a title = "Sub link one" href="#">Sub link one</a>
-                                 </li>
-                                  <li>
-                                     <a title = "Sub link two" href="#">Sub link two</a>
-                                 </li>
-                             </ul>
+                        <a title = "Manage Website Content" href="../public/manage_content.php">Manage Website Content</a>
                     </li>
                     <li>
                         <a title = "Manage Admin Users" href="../public/manage_admin.php">Manage Admin Users</a>

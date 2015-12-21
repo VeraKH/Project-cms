@@ -15,32 +15,19 @@
    }
 ?> 
 
-<section class = "inside" id="inside-course">
-            <article>
-                <h2>Manage Content</h2>
-<?php $result  = FindAllSubjects();?>
-<?php 
-	while($subject = mysqli_fetch_assoc($result)) {  
-?>     
-      <ul>
-	<li>
-	<?php $page_set = PagesForSubjects($subject["id"]); ?>
-	     <a href="manage_content.php?subject=<?php echo urlencode($subject["id"])?>" ><?php echo $subject["menu_name"]; ?></a>
-	</li>
-	     <?php while($page = mysqli_fetch_assoc($page_set )) {  ?>
-		<ul>
-	     		<li>
-	     		       <a href="manage_content.php?page=<?php echo urlencode($page["id"])?>"> <?php echo $page["menu_name"]; ?></a>
-	     		</li>
-	             </ul>
-	     <?php } ?>
-	     	<?php mysqli_free_result($page_set); ?>
-       </ul>
-<?php }  ?>
+<section class="all-subj-menu">
+  <div>
+   <?php echo Navigation($selected_subject_id, $selected_page_id ); ?>
+  </div>
+  </section>
 
-<?php mysqli_free_result($result); ?>
-                
-            </article>
-        </section>
+    <section  class="page">
+              <div>
+                <h2>Manage Content</h2>
+                <p>Here is the content for each page</p>
+                    <?php echo $selected_subject_id; ?><br />
+                    <?php echo $selected_page_id; ?>
+              </div>
+            </section>
 
 <?php include ("../includes/layouts/footer.php"); ?>

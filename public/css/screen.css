@@ -305,6 +305,33 @@ section.inside article img {
 
 /*Navigation*/
 
+section.all-subj-menu {
+    padding: 0 0;
+    float: left;
+    width: 300px; height: 690px;
+    background-color: rgba(103,103,103, .1);
+    padding: 10px 10px;
+}
+
+section.all-subj-menu div ul li a {
+  text-decoration: none;
+  color: #555;
+}
+
+section.all-subj-menu div ul li a:hover {
+  text-decoration: underline;
+}
+
+section.page div {
+ float: left;
+ vertical-align: top;
+ height: auto;
+ padding: 10px 20px;
+}
+
+ul.pages {font-weight: normal;}
+.selected {font-weight: bold;}
+
 nav {
   background-color: rgba(103,103,103, .5);
   position: absolute;
@@ -700,6 +727,22 @@ section.how-to aside div.content  {
 section.how-to aside div.content img { width: auto; height: 100px; top: 30px;}
 
 section.how-to blockquote { margin: 10px 40px 0px 20px;}  
+}
+
+section div.content-area {
+      height: 100%;
+      width: 600px;
+      position: relative;
+      display: block;
+
+}
+
+section div.menu-area {
+      height: 100%;
+      width: 150px;
+      float:left;
+      position: absolute;
+      display: block;
 }
 
 /*Footer*/
