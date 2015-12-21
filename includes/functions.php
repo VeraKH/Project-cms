@@ -12,7 +12,7 @@ function FindAllSubjects (){
 
 	$query = "SELECT * ";
 	$query .= "FROM subjects ";
-	$query .= "WHERE visible = 1 ";
+	// $query .= "WHERE visible = 1 ";
 	$query .= "ORDER BY position ASC";
             $result = mysqli_query($db, $query);
 	ConfirmQuery($result);
@@ -21,25 +21,78 @@ function FindAllSubjects (){
 
 function PagesForSubjects ($subject_id) {
 	global $db;
+	$safe_subject_id = mysqli_real_escape_string($db, $subject_id);
 
 	$query = "SELECT * ";
 	$query .= "FROM pages ";
 	$query .= "WHERE visible = 1 ";
-	$query .= "AND subject_id = {$subject_id} ";
+	$query .= "AND subject_id = {$safe_subject_id} ";
 	$query .= "ORDER BY position ASC";
             $page_set = mysqli_query($db, $query);
 	ConfirmQuery($page_set);
 	return $page_set;
 }
 
-// Selected item ID if any and selected page ID if any
-function Navigation($subject_id, $page_id){
+function FindSubjectById ($subject_id) {
+	global $db;
+
+	$safe_subject_id = mysqli_real_escape_string($db, $subject_id);
+
+	$query = "SELECT * ";
+	$query .= "FROM subjects ";
+	$query .= "WHERE id = {$safe_subject_id}    ";
+	$query .= "LIMIT 1";
+            $subject_set = mysqli_query($db, $query);
+	ConfirmQuery($subject_set);
+	if ($subject = mysqli_fetch_assoc($subject_set)) {
+		return $subject;
+	} else { 
+		return null;
+	}
+}
+
+function FindPageById ($page_id) {
+	global $db;
+
+	$safe_page_id = mysqli_real_escape_string($db, $page_id);
+
+	$query = "SELECT * ";
+	$query .= "FROM pages ";
+	$query .= "WHERE id = {$safe_page_id}    ";
+	$query .= "LIMIT 1";
+            $page_set = mysqli_query($db, $query);
+	ConfirmQuery($page_set);
+	if ($page = mysqli_fetch_assoc($page_set)) {
+		return $page;
+	} else { 
+		return null;
+	}
+}
+
+function FindSelectedPage(){
+	global $current_subject;
+	global $current_page;
+     if (isset($_GET["subject"])) {
+      $current_subject = FindSubjectById($_GET["subject"]);
+      $current_page = null;
+   } elseif (isset($_GET["page"])) {
+      $current_page = FindPageById($_GET["page"]);
+   	$selected_subject_id = null;
+      $current_subject = null;
+   } else {
+      $current_subject = null;
+       $current_page = null;
+   }
+}
+
+// Selected item ID if any and selected page ID if any -> array or null
+function Navigation($subject_array, $page_array){
 
     $output = "<ul class=\"subjects\">";
     $subject_set = FindAllSubjects();
      while($subject = mysqli_fetch_assoc($subject_set)) {
          $output .= "<li";
-                  if ($subject["id"] == $subject_id) { 
+                  if ($subject_array && $subject["id"] == $subject_array["id"]) { 
                     $output .=  " class=\"selected\" ";
                   } 
                     $output .=  ">"; 
@@ -53,7 +106,7 @@ function Navigation($subject_id, $page_id){
           $output .= "<ul class=\"pages\">";
           while($page = mysqli_fetch_assoc($page_set)) {
               $output .=  "<li";
-                  if ($page["id"] == $page_id) { 
+                  if ($page_array &&  $page["id"] == $page_array["id"]) { 
                     $output .=  " class=\"selected\" ";
                   } 
                     $output .=  ">"; 
@@ -71,6 +124,5 @@ function Navigation($subject_id, $page_id){
 
     	return $output;
 }
-
 
 ?>

@@ -3,30 +3,28 @@
 <?php include ("../includes/layouts/admin-header.php");?>
 
 <?php 
-   if (isset($_GET["subject"])) {
-   	$selected_subject_id = $_GET["subject"];
-   	$selected_page_id = null;
-   } elseif (isset($_GET["page"])) {
-   	$selected_page_id = $_GET["page"];
-   	$selected_subject_id = null;
-   } else {
-   	$selected_subject_id = null;
-   	$selected_page_id = null;
-   }
+FindSelectedPage();
 ?> 
 
 <section class="all-subj-menu">
   <div>
-   <?php echo Navigation($selected_subject_id, $selected_page_id ); ?>
+   <?php echo Navigation($current_subject, $current_page); ?>
   </div>
   </section>
 
     <section  class="page">
               <div>
-                <h2>Manage Content</h2>
-                <p>Here is the content for each page</p>
-                    <?php echo $selected_subject_id; ?><br />
-                    <?php echo $selected_page_id; ?>
+                    <?php if ($current_subject) { ?>
+                    <h2>Manage Content</h2>
+                      Menu name:   <?php echo $current_subject["menu_name"]; ?>
+                    
+                      <?php } elseif ($current_page) { ?>
+                      <h2>Manage Page</h2>
+                      Page name:   <?php echo $current_page["menu_name"]; ?>
+                         
+                                <?php } else { ?>
+                        Please select a subject or a page
+                        <?php } ?>
               </div>
             </section>
 
