@@ -1,5 +1,16 @@
 <?php
 
+function RedirectTo($new_location){
+  header("Location: " .  $new_location);
+}
+
+function MysqlPrep($string) {
+  global $db;
+  $escaped_string = mysqli_real_escape_string($db, $string);
+  return $escaped_string;
+}
+
+
 function ConfirmQuery ($result_set) {
 	
 	      if (!$result_set) {
@@ -124,5 +135,6 @@ function Navigation($subject_array, $page_array){
 
     	return $output;
 }
+
 
 ?>

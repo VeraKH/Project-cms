@@ -1,19 +1,19 @@
+<?php require_once ("../includes/session.php"); ?>
 <?php require_once ("../includes/db_connect.php"); ?>
 <?php require_once ("../includes/functions.php"); ?>
 <?php include ("../includes/layouts/admin-header.php");?>
-
-<?php 
-FindSelectedPage();
-?> 
+<?php  FindSelectedPage(); ?> 
 
 <section class="all-subj-menu">
   <div>
    <?php echo Navigation($current_subject, $current_page); ?>
+   <ul><li><a href="new_subject.php ">+ Add a subject</a></li></ul>
   </div>
   </section>
 
     <section  class="page">
               <div>
+                <?php echo message(); ?>
                     <?php if ($current_subject) { ?>
                     <h2>Manage Content</h2>
                       Menu name:   <?php echo $current_subject["menu_name"]; ?>
