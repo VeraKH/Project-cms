@@ -41,12 +41,11 @@
              $query .= "LIMIT 1";
              $result = mysqli_query($db, $query);
 
-            if ($result && mysqli_affected_rows($db) == 1) {
+            if ($result && mysqli_affected_rows($db) >= 0) {
               $_SESSION["message"] = "Subject updated.";
               RedirectTo("manage_content.php");
             } else {
               $message = "Subject update failed";
-              RedirectTo("new_subject.php");
             } 
         } else {      
             //Prob GET request
@@ -64,16 +63,16 @@
               <div>
                   <?php 
                           if (!empty($message)) {
-                            echo "<div class =\"message\">" . $message . "</div";
+                            echo "<div class =\"message\">" . htmlentities($message) . "</div";
                             } 
                     ?>
                      <?php echo FormErrors($errors)?>
                     
 
-              <h2>Edit Subject: <?php echo $current_subject["menu_name"];?></h2>
-                   <form action="edit_subject.php?subject=<?php echo $current_subject["id"];?>" method="post">
+              <h2>Edit Subject: <?php echo htmlentities($current_subject["menu_name"]);?></h2>
+                   <form action="edit_subject.php?subject=<?php echo urlencode($current_subject["id"]);?>" method="post">
                      <p>Menu Name:
-                     <input type="text" name="menu_name" value="<?php echo $current_subject["menu_name"];?>" />
+                     <input type="text" name="menu_name" value="<?php echo htmlentities($current_subject["menu_name"]);?>" />
                      </p>
                      <p>Position
                      <select name="position">
@@ -114,7 +113,7 @@
                    <a href="manage_content.php">Cancel</a>
                    &nbsp; 
                    &nbsp;
-                    <a href="delete_subject.php?subject=<?php echo $current_subject["id"]?>">Delete subject</a>
+                    <a href="delete_subject.php?subject=<?php echo urlencode($current_subject["id"])?>">Delete subject</a>
               </div>
             </section>
 

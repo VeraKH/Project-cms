@@ -128,7 +128,7 @@ function Navigation($subject_array, $page_array){
           $output .= "<a href=\"manage_content.php?subject=";
           $output .=  urlencode($subject["id"]); 
           $output .=  "\">"; 
-          $output .=   $subject["menu_name"];
+          $output .=   htmlentities($subject["menu_name"]);
           $output .=  "</a>";
           
           $page_set = PagesForSubjects($subject["id"]); 
@@ -142,7 +142,7 @@ function Navigation($subject_array, $page_array){
                    $output .= "<a href=\"manage_content.php?page=";
                    $output .=  urlencode($page["id"]); 
                    $output .= "\">";
-                   $output .=  $page["menu_name"]; 
+                   $output .=  htmlentities($page["menu_name"]); 
                    $output .= "</a></li>";
               }
             mysqli_free_result($page_set);

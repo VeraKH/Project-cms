@@ -6,6 +6,7 @@
 
 <section class="all-subj-menu">
   <div>
+  <ul><li><a href="manage_content.php">&laquo; Main Menu</a></li></ul>
    <?php echo Navigation($current_subject, $current_page); ?>
    <ul><li><a href="new_subject.php ">+ Add a subject</a></li></ul>
   </div>
@@ -16,11 +17,19 @@
                 <?php echo message(); ?>
                     <?php if ($current_subject) { ?>
                     <h2>Manage Content</h2>
-                      Menu name:   <?php echo $current_subject["menu_name"]; ?>
-                    <a href="edit_subject.php?subject=<?php echo $current_subject["id"]; ?> ">Edit subject</a>
+                      Menu name:   <?php echo htmlentities($current_subject["menu_name"]); ?><br/>
+                      Position <?php echo $current_subject["position"]; ?> <br />
+                      Visible <?php echo $current_subject["visible"] == 1 ? 'yes' : 'no'; ?> <br />
+                    <a href="edit_subject.php?subject=<?php echo urlencode($current_subject["id"]); ?> ">Edit subject</a>
                       <?php } elseif ($current_page) { ?>
                       <h2>Manage Page</h2>
-                      Page name:   <?php echo $current_page["menu_name"]; ?>
+                      Page name:   <?php echo htmlentities($current_page["menu_name"]) ; ?><br/>
+                      Position <?php echo $current_page["position"]; ?> <br />
+                      Visible <?php echo $current_page["visible"] == 1 ? 'yes' : 'no'; ?> <br />
+                      Content: <br/>
+                      <div class="page-content">
+                        <?php echo htmlentities($current_page["content"]); ?> <br />
+                      </div>
                          
                                 <?php } else { ?>
                         <div class="select-note">Please select a subject or a page</div>
