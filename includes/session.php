@@ -10,5 +10,16 @@ function message(){
                   $_SESSION["message"] = null;
                   return $output;
               }
-}              
+}    
+
+function Errors(){
+              if (isset($_SESSION["errors"])) {
+                  $errors = $_SESSION["errors"];
+
+                  $_SESSION["errors"] = null;
+                  return $errors;
+              }
+}    
+
+
 ?>

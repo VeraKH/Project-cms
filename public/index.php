@@ -81,10 +81,10 @@ include ("../includes/layouts/head.php");
                         <a title = "About Us" href="#" area-haspopup="true">About Us</a>
                              <ul>
                                  <li>
-                                     <a title = "Sub link one" href="#">Sub link one</a>
+                                     <a title = "Sub link one" href="#">Our mission</a>
                                  </li>
                                   <li>
-                                     <a title = "Sub link two" href="#" area-haspopup="true">Sub link two</a>
+                                     <a title = "Sub link two" href="#" area-haspopup="true">Our team</a>
                                         <ul>
                                              <li>
                                                      <a title = "Sub Sub link one" href="#">Sub Sub link one</a>
@@ -103,10 +103,10 @@ include ("../includes/layouts/head.php");
                         <a title = "Learning tools" href="#" area-haspopup="true" >Learning tools</a>
                         <ul>
                          <li>
-                                     <a title = "Sub link one" href="#">Sub link one</a>
+                                     <a title = "Sub link one" href="#">About classes</a>
                                  </li>
                                   <li>
-                                     <a title = "Sub link two" href="#" area-haspopup="true">Sub link two</a>
+                                     <a title = "Sub link two" href="#" area-haspopup="true">Resourses</a>
                                      <ul>
                                              <li>
                                                      <a title = "Sub Sub link one" href="#">Sub Sub link one</a>
