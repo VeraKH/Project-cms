@@ -25,7 +25,6 @@
                      </p>
                      <p>Position
                      <select name="position">
-                     <option value="1">1</option>
                      <?php
                      $subject_set = FindAllSubjects();
                      $subject_count = mysqli_num_rows($subject_set); 

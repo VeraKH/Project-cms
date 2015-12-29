@@ -2,13 +2,15 @@
 <?php require_once ("../includes/db_connect.php"); ?>
 <?php require_once ("../includes/functions.php"); ?>
 <?php include ("../includes/layouts/admin-header.php");?>
+
 <?php  FindSelectedPage(); ?> 
 
 <section class="all-subj-menu">
   <div>
   <ul><li><a href="manage_content.php">&laquo; Main Menu</a></li></ul>
    <?php echo Navigation($current_subject, $current_page); ?>
-   <ul><li><a href="new_subject.php ">+ Add a subject</a></li></ul>
+   <ul>
+   <li><a href="new_subject.php ">+ Add a subject</a></li></ul>
   </div>
   </section>
 
@@ -20,7 +22,9 @@
                       Menu name:   <?php echo htmlentities($current_subject["menu_name"]); ?><br/>
                       Position <?php echo $current_subject["position"]; ?> <br />
                       Visible <?php echo $current_subject["visible"] == 1 ? 'yes' : 'no'; ?> <br />
-                    <a href="edit_subject.php?subject=<?php echo urlencode($current_subject["id"]); ?> ">Edit subject</a>
+                    <br/>
+                    <a href="edit_subject.php?subject=<?php echo urlencode($current_subject["id"]); ?> ">Edit subject</a><br/>
+                       <a href="new_page.php?subject=<?php echo urlencode($current_subject["id"]); ?> ">Add a page</a>
                       <?php } elseif ($current_page) { ?>
                       <h2>Manage Page</h2>
                       Page name:   <?php echo htmlentities($current_page["menu_name"]) ; ?><br/>
@@ -30,6 +34,7 @@
                       <div class="page-content">
                         <?php echo htmlentities($current_page["content"]); ?> <br />
                       </div>
+                      <p><a href="edit_page.php?page=<?php echo urlencode($current_page["id"]); ?> ">Edit page</a><br/>
                          
                                 <?php } else { ?>
                         <div class="select-note">Please select a subject or a page</div>

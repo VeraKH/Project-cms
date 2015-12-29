@@ -1,5 +1,6 @@
 <?php
 
+
 function RedirectTo($new_location){
   header("Location: " .  $new_location);
   exit;
@@ -50,7 +51,7 @@ function FindAllSubjects (){
 
 function PagesForSubjects ($subject_id) {
 	global $db;
-	$safe_subject_id = mysqli_real_escape_string($db, $subject_id);
+      $safe_subject_id = mysqli_real_escape_string($db, $subject_id);
 
 	$query = "SELECT * ";
 	$query .= "FROM pages ";
@@ -64,7 +65,6 @@ function PagesForSubjects ($subject_id) {
 
 function FindSubjectById ($subject_id) {
 	global $db;
-
 	$safe_subject_id = mysqli_real_escape_string($db, $subject_id);
 
 	$query = "SELECT * ";
