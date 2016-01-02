@@ -1,8 +1,12 @@
-<?php
-include ("../includes/layouts/head.php");
-?>
+<?php include ("../includes/layouts/head.php"); ?>
+<?php require_once ("../includes/session.php"); ?>
+<?php require_once ("../includes/db_connect.php"); ?>
+<?php require_once ("../includes/functions.php"); ?>
+
+<?php  FindSelectedPage(); ?> 
+
         <header>
-            <a class= "logo" title="JClass" href="http://jclass.com "><span>JClass</span></a>
+            <a class= "logo" title="JClass" href="http://localhost/~tsukomoto/project_cms/public/"><span>JClass</span></a>
             <div class="hero">
                     <h1>All you need is to learn Japanese</h1>
                     <a class="btn" ttitle="Get lessons from top teachers" href="#"><span>Get Lessons From</span> Top Teachers</a>
@@ -13,14 +17,18 @@ include ("../includes/layouts/head.php");
              <aside>
                 <div class = "content community">
                     <h3><a href="#atmo-anc">How we teach</a></h3>
-                    <p>Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Lorem ipsum dolor sit amet, consect.</p>
+                     <p><?php $current_page = FindPageById(14);
+                    echo $val = substr($current_page["content"], 0, 150) . "...";
+                    ?> </p>
                 </div>
             </aside>
             
             <aside>
                 <div class = "content stratagy">
                     <h3><a href="#inside-course">What's inside the course</a></h3>
-                    <p>Lorem ipsum dolor sit amet, consect etuer adipiscing elit. <a href="http://codifydesign.com">Morbi commodo</a>, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis.</p>
+                      <p><?php $current_page = FindPageById(17);
+                    echo $val = substr($current_page["content"], 0, 150) . "...";
+                    ?> </p>
                 </div>
             </aside>
             
@@ -66,7 +74,10 @@ include ("../includes/layouts/head.php");
          <section class = "inside" id="inside-course">
             <article>
                 <h2>What's inside the course</h2>
-                <p>Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Lorem ipsum dolor sit amet etuer adipiscing elit.  Pulvinar odio lorem non turpis. Nullam sit amet enim lorem. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Lorem ipsum dolor sit amet etuer adipiscing elit.  Pulvinar odio lorem non turpis. Nullam sit amet enim lorem.Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis.  Lorem ipsum dolor sit amet etuer adipiscing elit.  Pulvinar odio lorem non turpis. Nullam sit amet enim lorem.</p>
+                 <p><?php 
+                    $current_page = FindPageById(17);
+                    echo  $current_page["content"];
+                 ?></p> 
                 <img alt="Your account" src="img/photo_lighting.jpg"/>
                 <img alt="Your account" src="img/photo_lighting.jpg"/>
                 <img alt="Your account" src="img/photo_lighting.jpg"/>
@@ -74,60 +85,13 @@ include ("../includes/layouts/head.php");
             </article>
         </section>
 
+       <nav>
+            <p><?php echo MainNavigation($current_subject, $current_page); ?> </p>
+      </nav>
+       </section>
 
-        <nav>
-                <ul>
-                    <li>
-                        <a title = "About Us" href="#" area-haspopup="true">About Us</a>
-                             <ul>
-                                 <li>
-                                     <a title = "Sub link one" href="#">Our mission</a>
-                                 </li>
-                                  <li>
-                                     <a title = "Sub link two" href="#" area-haspopup="true">Our team</a>
-                                        <ul>
-                                             <li>
-                                                     <a title = "Sub Sub link one" href="#">Sub Sub link one</a>
-                                                 </li>
-                                                  <li>
-                                                     <a title = "Sub Sub link two" href="#">Sub Sub link two</a>
-                                                 </li>
-                                       </ul>
-                                 </li>
-                             </ul>
-                    </li>
-                    <li>
-                        <a title = "Teacher's corner" href="#">Teacher's corner</a>
-                    </li>
-                     <li>
-                        <a title = "Learning tools" href="#" area-haspopup="true" >Learning tools</a>
-                        <ul>
-                         <li>
-                                     <a title = "Sub link one" href="#">About classes</a>
-                                 </li>
-                                  <li>
-                                     <a title = "Sub link two" href="#" area-haspopup="true">Resourses</a>
-                                     <ul>
-                                             <li>
-                                                     <a title = "Sub Sub link one" href="#">Sub Sub link one</a>
-                                                 </li>
-                                                  <li>
-                                                     <a title = "Sub Sub link two" href="#">Sub Sub link two</a>
-                                                 </li>
-                                       </ul>
-                                 </li>
-                            </ul>     
-                    </li>
-                    </li>
-                     <li>
-                        <a title = "Contact Us" href="#footer-anc">Contact Us</a>
-                    </li>
-                     <li>
-                        <a title = "Login" href="#"Log In</a>
-                    </li>
-                </ul>
-        </nav>
 
+     
     <?php
        include ("../includes/layouts/footer.php");
     ?>

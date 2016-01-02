@@ -14,7 +14,7 @@
   </div>
   </section>
 
-    <section  class="page">
+    <section  class="page-cont">
               <div>
                 <?php echo message(); ?>
                     <?php if ($current_subject) { ?>
@@ -28,6 +28,7 @@
                       <?php } elseif ($current_page) { ?>
                       <h2>Manage Page</h2>
                       Page name:   <?php echo htmlentities($current_page["menu_name"]) ; ?><br/>
+                      Id:   <?php echo htmlentities($current_page["id"]) ; ?><br/>
                       Position <?php echo $current_page["position"]; ?> <br />
                       Visible <?php echo $current_page["visible"] == 1 ? 'yes' : 'no'; ?> <br />
                       Content: <br/>

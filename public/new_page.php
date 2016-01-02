@@ -19,7 +19,7 @@
           $fields_required  = array("menu_name", "position", "visible", "content");
           ValidatePresence($fields_required);
 
-          $fields_with_max_lengths = array("menu_name" => 30);
+          $fields_with_max_lengths = array("menu_name" => 70);
           ValidateMaxLengths($fields_with_max_lengths);
 
             if (empty($errors)) {

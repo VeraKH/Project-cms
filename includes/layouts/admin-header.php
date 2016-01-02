@@ -3,7 +3,7 @@ include ("head.php");
 ?>
 
      <header class="admin">
-            <a class= "logo" title="JClass" href="http://jclass.com "><span>JClass</span></a>
+            <a class= "logo" title="JClass" href="ttp://localhost/~tsukomoto/project_cms/public/"><span>JClass</span></a>
             <div class="hero">
                     <h1>Admin panel</h1>
             </div>

@@ -114,6 +114,13 @@ function FindSelectedPage(){
    }
 }
 
+function FindSelectedContent($current_content){
+
+     $current_page = FindPageById($_GET["page"]);
+     $selected_subject_id = null;
+     $current_subject = null;
+}
+
 // Selected item ID if any and selected page ID if any -> array or null
 function Navigation($subject_array, $page_array){
 
@@ -153,5 +160,45 @@ function Navigation($subject_array, $page_array){
 
     	return $output;
 }
+
+function MainNavigation($subject_array, $page_array){
+
+    $output = "<ul class=\"subjects\">";
+    $subject_set = FindAllSubjects();
+     while($subject = mysqli_fetch_assoc($subject_set)) {
+         $output .= "<li";
+                  if ($subject_array && $subject["id"] == $subject_array["id"]) { 
+                    $output .=  " class=\"selected\" ";
+                  } 
+                    $output .=  ">"; 
+          $output .= "<a href=\"manage_content.php?subject=";
+          $output .=  urlencode($subject["id"]); 
+          $output .=  "\">"; 
+          $output .=   htmlentities($subject["menu_name"]);
+          $output .=  "</a>";
+          
+          $page_set = PagesForSubjects($subject["id"]); 
+          $output .= "<ul class=\"pages\">";
+          while($page = mysqli_fetch_assoc($page_set)) {
+              $output .=  "<li";
+                  if ($page_array &&  $page["id"] == $page_array["id"]) { 
+                    $output .=  " class=\"selected\" ";
+                  } 
+                    $output .=  ">"; 
+                   $output .= "<a href=\"page_content.php?page=";
+                   $output .=  urlencode($page["id"]); 
+                   $output .= "\">";
+                   $output .=  htmlentities($page["menu_name"]); 
+                   $output .= "</a></li>";
+              }
+            mysqli_free_result($page_set);
+            $output .= "</ul></li>"; 
+      }
+      mysqli_free_result($subject_set);
+      $output .= "</ul>";
+
+      return $output;
+}
+
 
 ?>
