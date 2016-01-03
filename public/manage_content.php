@@ -19,6 +19,7 @@
                 <?php echo message(); ?>
                     <?php if ($current_subject) { ?>
                     <h2>Manage Content</h2>
+                       Id: <?php echo htmlentities($current_subject["id"]) ; ?><br/>
                       Menu name:   <?php echo htmlentities($current_subject["menu_name"]); ?><br/>
                       Position <?php echo $current_subject["position"]; ?> <br />
                       Visible <?php echo $current_subject["visible"] == 1 ? 'yes' : 'no'; ?> <br />

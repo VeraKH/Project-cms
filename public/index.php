@@ -16,34 +16,30 @@
         <section class = "main">
              <aside>
                 <div class = "content community">
-                    <h3><a href="#atmo-anc">How we teach</a></h3>
-                     <p><?php $current_page = FindPageById(14);
-                    echo $val = substr($current_page["content"], 0, 150) . "...";
-                    ?> </p>
+                    <h3><a href="#inside-course"><?php echo FindSelectedSubjectTitle(55) ?></a></h3>
+                     <p><?php echo FindSelectedContent(14, 170);?></p>
                 </div>
             </aside>
             
             <aside>
                 <div class = "content stratagy">
-                    <h3><a href="#inside-course">What's inside the course</a></h3>
-                      <p><?php $current_page = FindPageById(17);
-                    echo $val = substr($current_page["content"], 0, 150) . "...";
-                    ?> </p>
+                    <h3><a href="#inside-course"><?php echo FindSelectedSubjectTitle(56) ?></a></h3>
+                     <p><?php echo FindSelectedContent(17, 170);?></p>
                 </div>
             </aside>
             
              <aside>
                 <div class = "content tools">
-                    <h3><a href="#tools">Find your community</a></h3>
-                    <p>Nullam sit amet enim. Lorem ipsum dolor sit amet, consect etuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci rhoncus neque, id pulvinar odio.</p>
+                   <h3><a href="#inside-course"><?php echo FindSelectedSubjectTitle(57) ?></a></h3>
+                    <p><?php echo FindSelectedContent(18, 170);?></p>
                 </div>
             </aside>
         </section>
 
          <section class = "atmosphere" id="atmo-anc">
             <article>
-                <h2>Offering the best learning tools</h2>
-                <p>Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Lorem ipsum dolor sit amet etuer adipiscing elit.  Pulvinar odio lorem non turpis. Nullam sit amet enim lorem.</p>
+                <h2><?php echo FindSelectedPageTitle(14) ?></h2>
+                 <p><?php echo FindSelectedContent(14, 480);?></p>
                 <a class = "btn" title ="Offering the best learning tools" href="#">Learn more</a>
             </article>
         </section>
@@ -52,16 +48,16 @@
             <aside>
                 <div class="content">
                         <img alt="Your account" src="img/photo_seating.jpg"/>
-                       <h4>How-To: Use your personel cabinet</h4>
-                        <p>Consectetuer adipiscing elit. Morbi commodo ipsum sed gravida orci magna rhoncus pulvinar odio lorem.</p>
-                        <a title="Learn how to use your personel cabinet." href="http://codifydesign.com">Learn more</a>
+                       <h4><?php echo FindSelectedPageTitle(15) ?></h4>
+                        <p><?php echo FindSelectedContent(15, 100);?></p>
+                        <a title="Use your personal cabinet." href="http://codifydesign.com">Learn more</a>
                 </div>
             </aside>
             <aside>
                     <div class="content">
                         <img alt="Your account" src="img/photo_lighting.jpg"/>
-                        <h4>How-To: Whatch your learning statistics</h4>
-                        <p>Morbi commodo, ipsum sed pharetra gravida magna rhoncus neque id pulvinar odio lorem non turpis nullam sit amet.</p>
+                      <h4><?php echo FindSelectedPageTitle(16) ?></h4>
+                        <p><?php echo FindSelectedContent(16, 100);?></p>
                         <a title="Learn how to Whatch your learning statistics." href="http://codifydesign.com">Learn more</a>
                     </div>
             </aside>
@@ -88,7 +84,6 @@
        <nav>
             <p><?php echo MainNavigation($current_subject, $current_page); ?> </p>
       </nav>
-       </section>
 
 
      

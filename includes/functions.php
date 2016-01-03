@@ -114,12 +114,24 @@ function FindSelectedPage(){
    }
 }
 
-function FindSelectedContent($current_content){
-
-     $current_page = FindPageById($_GET["page"]);
-     $selected_subject_id = null;
-     $current_subject = null;
+function FindSelectedContent($page_id, $symbols_number){
+     $current_page = FindPageById($page_id);
+     $selected_content = substr($current_page["content"], 0, $symbols_number) . "...";
+     return $selected_content;
 }
+
+function FindSelectedPageTitle($page_id){
+     $current_page = FindPageById($page_id);
+     $selected_title = $current_page["menu_name"];
+     return $selected_title;
+}
+
+function FindSelectedSubjectTitle($subject_id){
+     $current_subject = FindSubjectById($subject_id);
+     $selected_title = $current_subject["menu_name"];
+     return $selected_title;
+}
+
 
 // Selected item ID if any and selected page ID if any -> array or null
 function Navigation($subject_array, $page_array){
