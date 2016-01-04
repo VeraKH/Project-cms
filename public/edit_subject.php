@@ -55,7 +55,7 @@
 
 <section class="all-subj-menu">
   <div>
-   <?php echo Navigation($current_subject, $current_page); ?>
+   <?php echo Navigation($current_subject, $current_page, false); ?>
   </div>
   </section>
 

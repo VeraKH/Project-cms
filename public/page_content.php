@@ -3,7 +3,7 @@
 <?php require_once ("../includes/db_connect.php"); ?>
 <?php require_once ("../includes/functions.php"); ?>
 
-<?php  FindSelectedPage(); ?> 
+<?php  FindSelectedPage(true); ?> 
 
         <header>
             <a class= "logo" title="JClass" href="http://localhost/~tsukomoto/project_cms/public/index.php"><span>JClass</span></a>
@@ -16,15 +16,18 @@
 
          <section class = "inside" id="inside-course">
             <article>
-                <h2><?php echo htmlentities($current_page["menu_name"]); ?> </h2>
-                <?php echo htmlentities($current_page["content"]); ?> <br />
 
+            <?php if ($current_page) {?>
+            <h2><?php echo htmlentities($current_page["menu_name"]); ?></h2> 
+            <p><?php echo nl2br(htmlentities($current_page["content"])); ?></p>
+            <?php }  else {?>
+            <h2>Happy New Year! </h2>
+            <?php }?>
                 
             </article>
-        </section>
 
        <nav>
-           <p> <?php echo PublicNavigation($current_subject, $current_page); ?> </p>
+           <p> <?php echo Navigation($current_subject, $current_page, $public=true); ?> </p>
       </nav>
        </section>
 

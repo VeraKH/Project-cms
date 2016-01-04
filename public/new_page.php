@@ -53,7 +53,7 @@
 
 <section class="all-subj-menu">
   <div>
-   <?php echo Navigation($current_subject, $current_page); ?>
+   <?php echo Navigation($current_subject, $current_page, false); ?>
   </div>
   </section>
     <section  class="page">
@@ -68,7 +68,7 @@
                      <p>Position:
                      <select name="position">
                       <?php
-                     $page_position = PagesForSubjects($current_subject["id"]), false;
+                     $page_position = PagesForSubjects($current_subject["id"], false);
                      $pages_count = mysqli_num_rows($page_position); 
                      for ($i=1; $i <=$pages_count+1;  $i++) { 
                        echo "<option value=\"{$i}\">{$i}</option>";

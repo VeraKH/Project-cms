@@ -65,13 +65,16 @@ function PagesForSubjects ($subject_id, $public=true ) {
 	return $page_set;
 }
 
-function FindSubjectById ($subject_id) {
+function FindSubjectById ($subject_id, $public = true) {
 	global $db;
 	$safe_subject_id = mysqli_real_escape_string($db, $subject_id);
 
 	$query = "SELECT * ";
 	$query .= "FROM subjects ";
 	$query .= "WHERE id = {$safe_subject_id}    ";
+    if ($public) {
+      $query .= "AND visible = 1 ";
+      }
 	$query .= "LIMIT 1";
             $subject_set = mysqli_query($db, $query);
 	ConfirmQuery($subject_set);
@@ -82,12 +85,15 @@ function FindSubjectById ($subject_id) {
 	}
 }
 
-function FindPageById ($page_id) {
+function FindPageById ($page_id, $public=true) {
 	global $db;
 	$safe_page_id = mysqli_real_escape_string($db, $page_id);
 	$query = "SELECT * ";
 	$query .= "FROM pages ";
 	$query .= "WHERE id = {$safe_page_id}    ";
+      if ($public) {
+      $query .= "AND visible = 1 ";
+      }
 	$query .= "LIMIT 1";
       $page_set = mysqli_query($db, $query);
 	ConfirmQuery($page_set);
@@ -98,14 +104,27 @@ function FindPageById ($page_id) {
 	}
 }
 
-function FindSelectedPage(){
+function FindPageForSubject($subject_id){
+     $page_set = PagesForSubjects($subject_id);
+     if ($first_page = mysqli_fetch_assoc($page_set)) {
+    return $first_page;
+  } else { 
+    return null;
+  }
+}
+
+function FindSelectedPage($public=false){
 	global $current_subject;
 	global $current_page;
      if (isset($_GET["subject"])) {
-      $current_subject = FindSubjectById($_GET["subject"]);
-      $current_page = null;
+      $current_subject = FindSubjectById($_GET["subject"], $public);
+      if ($current_subject && $public) {
+        $current_page = FindPageForSubject($current_subject["id"]);
+      } else {
+         $current_page = null;
+      }
    } elseif (isset($_GET["page"])) {
-      $current_page = FindPageById($_GET["page"]);
+      $current_page = FindPageById($_GET["page"], $public);
    	$selected_subject_id = null;
       $current_subject = null;
    } else {
@@ -158,7 +177,11 @@ function Navigation($subject_array, $page_array, $public=true){
           $output .=   htmlentities($subject["menu_name"]);
           $output .=  "</a>";
           
-          $page_set = PagesForSubjects($subject["id"]); 
+          if (!$public) {
+          $page_set = PagesForSubjects($subject["id"], false); 
+        }else {
+      $page_set = PagesForSubjects($subject["id"], true);
+    }
           $output .= "<ul class=\"pages\">";
           while($page = mysqli_fetch_assoc($page_set)) {
               $output .=  "<li";

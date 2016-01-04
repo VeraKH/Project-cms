@@ -4,7 +4,7 @@
 <?php include ("../includes/layouts/admin-header.php");?>
 
 <?php 
-    $current_subject = FindSubjectById($_GET["subject"]);
+    $current_subject = FindSubjectById($_GET["subject"], false);
         if (!$current_subject) {
           RedirectTo("manage_content.php");
         }

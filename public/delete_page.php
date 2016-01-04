@@ -5,7 +5,7 @@
 
 <?php 
 
-$current_page= FindPageById($_GET["page"]);
+$current_page= FindPageById($_GET["page"], false);
         if (!$current_page) {
           RedirectTo("manage_content.php");
         }
