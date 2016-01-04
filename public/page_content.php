@@ -6,7 +6,7 @@
 <?php  FindSelectedPage(); ?> 
 
         <header>
-            <a class= "logo" title="JClass" href="http://jclass.com "><span>JClass</span></a>
+            <a class= "logo" title="JClass" href="http://localhost/~tsukomoto/project_cms/public/index.php"><span>JClass</span></a>
             <div class="hero">
                     <h1>All you need is to learn Japanese</h1>
                     <a class="btn" ttitle="Get lessons from top teachers" href="#"><span>Get Lessons From</span> Top Teachers</a>
@@ -16,17 +16,15 @@
 
          <section class = "inside" id="inside-course">
             <article>
-                <h2>What's inside the course</h2>
+                <h2><?php echo htmlentities($current_page["menu_name"]); ?> </h2>
                 <?php echo htmlentities($current_page["content"]); ?> <br />
-                <img alt="Your account" src="img/photo_lighting.jpg"/>
-                <img alt="Your account" src="img/photo_lighting.jpg"/>
-                <img alt="Your account" src="img/photo_lighting.jpg"/>
+
                 
             </article>
         </section>
 
        <nav>
-           <p> <?php echo Navigation($current_subject, $current_page); ?> </p>
+           <p> <?php echo PublicNavigation($current_subject, $current_page); ?> </p>
       </nav>
        </section>
 

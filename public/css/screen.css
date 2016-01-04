@@ -441,7 +441,6 @@ nav > ul > li > a[area-haspopup = "true"]::after {
 /*New subject page*/
 
 div.message {
-  border: 2px solid #8D0D19;
   color: #8D0D19; font-weight: bold;
   padding: 1em;
   display: block;
@@ -510,6 +509,9 @@ footer a:hover {
     background-size: 375px auto;
   }
 
+    nav > ul { padding-left: 15px; }
+
+
 /*Meda query for 830px */
 
 @media screen and (max-width: 830px) {
@@ -536,35 +538,14 @@ header div.hero { left:  53%;  top: 43%;}
 
   /*Section Nav */
   nav { padding-top: 40px; }
-  nav > ul { padding-left: 170px; }
+  nav > ul { padding-left: 15px; }
 
 }
+
 
 /*Meda query for 800px */
 
 @media screen and (max-width: 800px) {
-      h1 { font-size:  2.1em; }
-
-  /*header */
-
-  header {
-    height: 300px;
-  }
-    
-header div.hero { left:  54%;  top: 43%;}
-
-    header div.hero  a.btn{
-    font-size: 1em;
- }
-
-  /*Section Nav */
-  nav { padding-top: 40px; }
-  nav > ul { padding-left: 70px; }
-
-
-/*Meda query for 750px */
-
-@media screen and (max-width: 750px) {
 
       h1 { font-size:  1.8em; }
       h2 { font-size:  1.4em; }
@@ -586,25 +567,25 @@ header div.hero { left:  54%;  top: 43%;}
 
 /*Nav  */
   nav { padding-top: 40px; }
-  nav > ul { padding-left: 50px; }
+  nav > ul { padding-left: 15px; }
 
     }     
 
 
-/*Meda query for 680px */
+/*Meda query for 730px */
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 730px) {
 
-      h1 { font-size:  1em; }
+      h1 { font-size:  1.8em;}
       h3 { margin-bottom:  0px; }
-      a.btn {font-size: .9em;}
+      a.btn {font-size: 1em;}
 
-      /*header */
+
       header  {
-        height: 160px;
-/*        background-image: url(../img/banner_625.jpg);*/
+        height: 240px;
         background-position: left top;
       }
+
 
       /*Nav  */
   nav { 
@@ -753,14 +734,15 @@ section.inside article img {
     footer div.content a {margin: 0px 20px 0px 0px;}
     }
 
-/*Meda query for 420px */
+/*Meda query for 460px */
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 460px) {
 
 
 /*Header */
     header {
-    height: 110px; 
+    height: 140px; 
+    font-size:  .7em;
 /*    background-image: url(../img/banner_425.jpg); */
   }
 
@@ -772,12 +754,12 @@ section.inside article img {
    header div.hero {
    position:  absolute;
    width: 300px;
-   top: 44px;
+   top: 53px;
    left: 25%;
 }
 
     header div.hero  a.btn{
-    font-size: .8em;
+    font-size: 1em;
  }
 
 /*Section how-to */
@@ -805,6 +787,11 @@ section div.menu-area {
       float:left;
       position: absolute;
       display: block;
+}
+
+section.inside article img {
+  width: 230px;
+  margin-left: 0px;
 }
 
 /*Footer*/

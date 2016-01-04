@@ -1,6 +1,5 @@
 <?php
 
-
 function RedirectTo($new_location){
   header("Location: " .  $new_location);
   exit;
@@ -11,7 +10,6 @@ function MysqlPrep($string) {
   $escaped_string = mysqli_real_escape_string($db, $string);
   return $escaped_string;
 }
-
 
 function ConfirmQuery ($result_set) {
 	
@@ -37,26 +35,30 @@ function FormErrors($errors=array()) {
     return $output;
   }
 
-function FindAllSubjects (){
+function FindAllSubjects ($public =true){
 	global $db;
 
 	$query = "SELECT * ";
 	$query .= "FROM subjects ";
-	// $query .= "WHERE visible = 1 ";
+      if ($public) {
+        $query .= "WHERE visible = 1 ";
+      }
 	$query .= "ORDER BY position ASC";
             $result = mysqli_query($db, $query);
 	ConfirmQuery($result);
 	return $result;
 }
 
-function PagesForSubjects ($subject_id) {
+function PagesForSubjects ($subject_id, $public=true ) {
 	global $db;
       $safe_subject_id = mysqli_real_escape_string($db, $subject_id);
 
 	$query = "SELECT * ";
 	$query .= "FROM pages ";
-	$query .= "WHERE visible = 1 ";
-	$query .= "AND subject_id = {$safe_subject_id} ";
+      $query .= "WHERE subject_id = {$safe_subject_id}  ";
+      if ($public) {
+        $query .= "AND visible = 1 ";
+      }
 	$query .= "ORDER BY position ASC";
             $page_set = mysqli_query($db, $query);
 	ConfirmQuery($page_set);
@@ -82,14 +84,12 @@ function FindSubjectById ($subject_id) {
 
 function FindPageById ($page_id) {
 	global $db;
-
 	$safe_page_id = mysqli_real_escape_string($db, $page_id);
-
 	$query = "SELECT * ";
 	$query .= "FROM pages ";
 	$query .= "WHERE id = {$safe_page_id}    ";
 	$query .= "LIMIT 1";
-            $page_set = mysqli_query($db, $query);
+      $page_set = mysqli_query($db, $query);
 	ConfirmQuery($page_set);
 	if ($page = mysqli_fetch_assoc($page_set)) {
 		return $page;
@@ -116,35 +116,43 @@ function FindSelectedPage(){
 
 function FindSelectedContent($page_id, $symbols_number){
      $current_page = FindPageById($page_id);
-     $selected_content = substr($current_page["content"], 0, $symbols_number) . "...";
+     $selected_content = substr(htmlentities($current_page["content"]), 0, $symbols_number) . "...";
      return $selected_content;
 }
 
 function FindSelectedPageTitle($page_id){
      $current_page = FindPageById($page_id);
-     $selected_title = $current_page["menu_name"];
+     $selected_title = htmlentities($current_page["menu_name"]);
      return $selected_title;
 }
 
 function FindSelectedSubjectTitle($subject_id){
      $current_subject = FindSubjectById($subject_id);
-     $selected_title = $current_subject["menu_name"];
+     $selected_title = htmlentities($current_subject["menu_name"]);
      return $selected_title;
 }
 
-
 // Selected item ID if any and selected page ID if any -> array or null
-function Navigation($subject_array, $page_array){
-
+function Navigation($subject_array, $page_array, $public=true){
     $output = "<ul class=\"subjects\">";
-    $subject_set = FindAllSubjects();
+     if (!$public) {
+         $subject_set = FindAllSubjects(false);
+      } 
+    else {
+      $subject_set = FindAllSubjects(true);
+    }
      while($subject = mysqli_fetch_assoc($subject_set)) {
          $output .= "<li";
                   if ($subject_array && $subject["id"] == $subject_array["id"]) { 
                     $output .=  " class=\"selected\" ";
                   } 
                     $output .=  ">"; 
-          $output .= "<a href=\"manage_content.php?subject=";
+           if (!$public) {
+                        $output .= "<a href=\"manage_content.php?subject=";
+            } else {
+                      $output .= "<a href=\"page_content.php?subject=";
+            }         
+        
           $output .=  urlencode($subject["id"]); 
           $output .=  "\">"; 
           $output .=   htmlentities($subject["menu_name"]);
@@ -158,7 +166,12 @@ function Navigation($subject_array, $page_array){
                     $output .=  " class=\"selected\" ";
                   } 
                     $output .=  ">"; 
-                   $output .= "<a href=\"manage_content.php?page=";
+            if (!$public) {
+                  $output .= "<a href=\"manage_content.php?page=";
+            }
+            else {
+              $output .= "<a href=\"page_content.php?page=";
+            }
                    $output .=  urlencode($page["id"]); 
                    $output .= "\">";
                    $output .=  htmlentities($page["menu_name"]); 
@@ -172,45 +185,5 @@ function Navigation($subject_array, $page_array){
 
     	return $output;
 }
-
-function MainNavigation($subject_array, $page_array){
-
-    $output = "<ul class=\"subjects\">";
-    $subject_set = FindAllSubjects();
-     while($subject = mysqli_fetch_assoc($subject_set)) {
-         $output .= "<li";
-                  if ($subject_array && $subject["id"] == $subject_array["id"]) { 
-                    $output .=  " class=\"selected\" ";
-                  } 
-                    $output .=  ">"; 
-          $output .= "<a href=\"manage_content.php?subject=";
-          $output .=  urlencode($subject["id"]); 
-          $output .=  "\">"; 
-          $output .=   htmlentities($subject["menu_name"]);
-          $output .=  "</a>";
-          
-          $page_set = PagesForSubjects($subject["id"]); 
-          $output .= "<ul class=\"pages\">";
-          while($page = mysqli_fetch_assoc($page_set)) {
-              $output .=  "<li";
-                  if ($page_array &&  $page["id"] == $page_array["id"]) { 
-                    $output .=  " class=\"selected\" ";
-                  } 
-                    $output .=  ">"; 
-                   $output .= "<a href=\"page_content.php?page=";
-                   $output .=  urlencode($page["id"]); 
-                   $output .= "\">";
-                   $output .=  htmlentities($page["menu_name"]); 
-                   $output .= "</a></li>";
-              }
-            mysqli_free_result($page_set);
-            $output .= "</ul></li>"; 
-      }
-      mysqli_free_result($subject_set);
-      $output .= "</ul>";
-
-      return $output;
-}
-
 
 ?>

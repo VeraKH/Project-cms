@@ -82,11 +82,9 @@
         </section>
 
        <nav>
-            <p><?php echo MainNavigation($current_subject, $current_page); ?> </p>
+            <p><?php echo Navigation($current_subject, $current_page, $public=true); ?> </p>
       </nav>
 
 
-     
-    <?php
-       include ("../includes/layouts/footer.php");
-    ?>
+     <?php $context = "public"; ?>
+    <?php include ("../includes/layouts/footer.php"); ?>

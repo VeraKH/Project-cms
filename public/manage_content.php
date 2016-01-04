@@ -8,7 +8,7 @@
 <section class="all-subj-menu">
   <div>
   <ul><li><a href="manage_content.php">&laquo; Main Menu</a></li></ul>
-   <?php echo Navigation($current_subject, $current_page); ?>
+   <?php echo Navigation($current_subject, $current_page, $public=false); ?>
    <ul>
    <li><a href="new_subject.php ">+ Add a subject</a></li></ul>
   </div>
@@ -44,4 +44,5 @@
               </div>
             </section>
 
+<?php $context = "admin"; ?>
 <?php include ("../includes/layouts/footer.php"); ?>
