@@ -12,10 +12,9 @@ function MysqlPrep($string) {
 }
 
 function ConfirmQuery ($result_set) {
-	
 	      if (!$result_set) {
-	 	die ("Database query failed");
-	}
+	 	     die ("Database query failed");
+	     }
 }
 
 function FormErrors($errors=array()) {
@@ -33,7 +32,7 @@ function FormErrors($errors=array()) {
       $output .= "</div>";
     }
     return $output;
-  }
+}
 
 function FindAllSubjects ($public =true){
 	global $db;
@@ -63,6 +62,17 @@ function PagesForSubjects ($subject_id, $public=true ) {
             $page_set = mysqli_query($db, $query);
 	ConfirmQuery($page_set);
 	return $page_set;
+}
+
+function FindAllAdmins (){
+  global $db;
+
+  $query = "SELECT * ";
+  $query .= "FROM admins ";
+  $query .= "ORDER BY username ASC";
+   $admin_set  = mysqli_query($db, $query);
+  ConfirmQuery($admin_set);
+  return $admin_set ;
 }
 
 function FindSubjectById ($subject_id, $public = true) {
@@ -104,13 +114,30 @@ function FindPageById ($page_id, $public=true) {
 	}
 }
 
-function FindPageForSubject($subject_id){
-     $page_set = PagesForSubjects($subject_id);
-     if ($first_page = mysqli_fetch_assoc($page_set)) {
-    return $first_page;
+function FindAdminById($admin_id) {
+  global $db;
+  $safe_admin_id = mysqli_real_escape_string($db, $admin_id);
+
+  $query = "SELECT * ";
+  $query .= "FROM admins ";
+  $query .= "WHERE id = {$safe_admin_id}    ";
+  $query .= "LIMIT 1";
+  $admin_set = mysqli_query($db, $query);
+  ConfirmQuery($admin_set);
+  if ($admin = mysqli_fetch_assoc($admin_set)) {
+    return $admin;
   } else { 
     return null;
   }
+}
+
+function FindPageForSubject($subject_id){
+          $page_set = PagesForSubjects($subject_id);
+          if ($first_page = mysqli_fetch_assoc($page_set)) {
+                return $first_page;
+          } else { 
+                return null;
+          }
 }
 
 function FindSelectedPage($public=false){
@@ -149,6 +176,24 @@ function FindSelectedSubjectTitle($subject_id){
      $current_subject = FindSubjectById($subject_id);
      $selected_title = htmlentities($current_subject["menu_name"]);
      return $selected_title;
+}
+
+/* Displaying only the first record. WHYYYYY???  OH, WHYYYYY? */
+function AdminsList(){
+              $admin_set = FindAllAdmins();
+              while($admin = mysqli_fetch_assoc($admin_set)) {
+                  $output = "<tr><td>";
+                  $output .= htmlentities($admin["username"]);
+                  $output .= "</td>";
+                  $output .= "<td><a href=\"edit_admin.php?id=";
+                  $output .= urlencode($admin["id"]); 
+                  $output .= "\">Edit</a></td></tr>";
+                  $output .= "<td><a href=\"delete_admin.php?id=";
+                  $output .= urlencode($admin["id"]); 
+                  $output .= "\">Delete</a></td></tr>";
+              }
+                  mysqli_free_result($admin_set);
+                  return $output; 
 }
 
 // Selected item ID if any and selected page ID if any -> array or null

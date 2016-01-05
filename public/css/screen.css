@@ -99,8 +99,8 @@ header div.hero {
 header.admin div.hero {
   position:  absolute;
   width: 30%;
-  top: 85px;
-  left: 70%;
+  top: 80px;
+  left: 40%;
 }
 
 header div.hero h1{
@@ -328,6 +328,15 @@ section.page-cont div {
  height: auto;
 }
 
+section.page-cont div  a{
+   text-decoration: none;
+   color: #555;
+}
+
+section.page-cont div  a:hover{
+   text-decoration: underline;
+}
+
 ul.pages {font-weight: normal;}
 .selected {font-weight: bold;}
 
@@ -342,6 +351,10 @@ nav {
 
 nav.admin-panel {
   padding: 20px 0 0 0;
+}
+
+nav.admin-panel >ul {
+  padding-left: 75%;
 }
 
 nav ul {
@@ -452,6 +465,23 @@ div.error {
   padding: 1em;
   margin-bottom: 1em;
 }
+
+/*Manage admin users page*/
+
+table {
+    margin-top: 30px;
+    width: 70%; 
+    background: #fff; 
+    color: #555; 
+    border-spacing: 1px; 
+   }
+   td, th {
+    padding: 5px; 
+   }
+
+    th {
+      text-align: left;
+    }
 
 /*Footer*/
 

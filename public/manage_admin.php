@@ -1,18 +1,43 @@
-<?php
-include ("../includes/layouts/admin-header.php");
-require_once ("../includes/functions.php");
-?>
+<?php require_once ("../includes/session.php"); ?>
+<?php require_once ("../includes/db_connect.php"); ?>
+<?php require_once ("../includes/functions.php"); ?>
 
-<section class = "inside" id="inside-course">
-            <article>
-                <h2>Manage Admin Users</h2>
-           
+<?php $admin_set =  FindAllAdmins(); ?>
 
-                
-            </article>
-        </section>
+<?php $context = "admin"; ?>
+<?php include ("../includes/layouts/admin-header.php");?>
+<section class="all-subj-menu">
+  <div>
+  </div>
+  </section>
+
+    <section  class="page-cont">
+             <div>
+                <?php echo message(); ?>
+                <h2>Manage Admins</h2>
+                <a href="new_admin.php"> + Create Admin User</a>
+                <table>
+	             <tr>   
+		       <th>Admin Username</th>
+	    	       <th>Edit option</th>
+	    	       <th>Delete option</th>
+	   	</tr>
+	   	<?php while($admin = mysqli_fetch_assoc($admin_set)) { ?>
+		      <tr>
+		        <td><?php echo htmlentities($admin["username"]); ?></td>
+		        <td><a href="edit_admin.php?id=<?php echo urlencode($admin["id"]); ?>">Edit</a></td>
+		        <td><a href="delete_admin.php?id=<?php echo urlencode($admin["id"]); ?>" onclick="return confirm('Are you sure?');">Delete</a></td>
+		      </tr>
+    		<?php } ?>
+	     </table>
+                     
+            </div>
+            </section>
+
+<?php $context = "admin"; ?>
+<?php include ("../includes/layouts/footer.php"); ?>
 
 
-<?php
-include ("../includes/layouts/footer.php");
-?>
+
+
+

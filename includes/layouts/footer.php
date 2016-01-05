@@ -7,7 +7,7 @@
                     <a title="Privacy Policy" href="#">Privacy Policy</a>
                     <a title="terms of Service" href="#">Terms of Use</a>
                     <?php if ($context == "public") {
-                    echo "<a title=\"terms of Service\" href=\"manage_content.php\">Admin</a>";
+                    echo "<a title=\"terms of Service\" href=\"admin.php\">Admin</a>";
                     }
                     ?>
                     </div>
