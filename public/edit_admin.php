@@ -28,11 +28,11 @@
 
           $id = $admin["id"];
           $username = MysqlPrep($_POST["username"]);
-          $password= MysqlPrep($_POST["password"]);
+          $hashed_password= PasswordEncrypt($_POST["password"]);
 
              $query = "UPDATE admins SET ";
              $query .= "username = '{$username}', ";
-             $query .= "password = '{$password}' ";
+             $query .= "hashed_password = '{$hashed_password}' ";
              $query .= "WHERE id = {$id} ";
              $query .= "LIMIT 1";
              $result = mysqli_query($db, $query);

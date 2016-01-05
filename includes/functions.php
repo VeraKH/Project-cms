@@ -254,4 +254,35 @@ function Navigation($subject_array, $page_array, $public=true){
     	return $output;
 }
 
+function PasswordEncrypt($password){
+          $hash_format = "$2y$10$";   // Tells PHP to use Blowfish with a "cost" of 10
+          $salt_length = 22;          // Blowfish salts should be 22-characters or more
+          $salt = GenerateSalt($salt_length);
+          $format_and_salt = $hash_format . $salt;
+          $hash = crypt($password, $format_and_salt);
+          return $hash;
+}
+
+
+
+function GenerateSalt($length){
+
+    $unique_random_string = md5(uniqid(mt_rand(), true));
+    $base64_string = base64_encode($unique_random_string);
+    $modified_based_string = str_replace("+", ".", $base64_string);
+    $salt = substr($modified_based_string, 0, $length);
+
+    return $salt; 
+}
+
+function PasswordCheck($password, $existing_hash) {
+    $hash = crypt($password, $existing_hash);
+    if ($hash === $existing_hash) {
+      return true;
+    } else {
+      return false;
+    }
+}
+
 ?>
+

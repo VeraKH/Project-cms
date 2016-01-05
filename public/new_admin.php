@@ -19,12 +19,12 @@
             if (empty($errors)) {
 
           $username = MysqlPrep($_POST["username"]);
-          $password= MysqlPrep($_POST["password"]);
+          $hashed_password= PasswordEncrypt($_POST["password"]);
 
              $query = "INSERT INTO admins (";
-             $query .= "username, password";
+             $query .= "username, hashed_password";
              $query .= ")  VALUES (";
-             $query .=  "  '{$username}', '{$password}' ";
+             $query .=  "  '{$username}', '{$hashed_password}' ";
              $query .= ")";
              $result = mysqli_query($db, $query);
 

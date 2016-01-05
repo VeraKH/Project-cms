@@ -19,12 +19,14 @@
                 <table>
 	             <tr>   
 		       <th>Admin Username</th>
+		       <th>Hashed password</th>
 	    	       <th>Edit option</th>
 	    	       <th>Delete option</th>
 	   	</tr>
 	   	<?php while($admin = mysqli_fetch_assoc($admin_set)) { ?>
 		      <tr>
 		        <td><?php echo htmlentities($admin["username"]); ?></td>
+		        <td><?php echo htmlentities($admin["hashed_password"]); ?></td>
 		        <td><a href="edit_admin.php?id=<?php echo urlencode($admin["id"]); ?>">Edit</a></td>
 		        <td><a href="delete_admin.php?id=<?php echo urlencode($admin["id"]); ?>" onclick="return confirm('Are you sure?');">Delete</a></td>
 		      </tr>
