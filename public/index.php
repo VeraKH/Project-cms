@@ -9,7 +9,7 @@
             <a class= "logo" title="JClass" href="http://localhost/~tsukomoto/project_cms/public/"><span>JClass</span></a>
             <div class="hero">
                     <h1>All you need is to learn Japanese</h1>
-                    <a class="btn" ttitle="Get lessons from top teachers" href="#"><span>Get Lessons From</span> Top Teachers</a>
+                    <a class="btn" ttitle="Get lessons from top teachers" href="#"><span>Register</span> And Start This Journey</a>
             </div>
         </header>
 

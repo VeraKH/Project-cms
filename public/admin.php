@@ -1,6 +1,7 @@
 <?php require_once ("../includes/session.php"); ?>
 <?php require_once ("../includes/db_connect.php"); ?>
 <?php require_once ("../includes/functions.php"); ?>
+<?php ConfirmLoggedIn(); ?>
 
 <?php $context = "admin"; ?>
 <?php include ("../includes/layouts/admin-header.php");?>
@@ -27,6 +28,7 @@
 
 <section  class="page-cont">
              <div>
+             <h2>Welcome, <?php echo htmlentities($_SESSION['username']);?></h2>
             </div>
             </section>
 

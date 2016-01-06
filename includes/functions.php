@@ -284,5 +284,61 @@ function PasswordCheck($password, $existing_hash) {
     }
 }
 
+function FindAdminByUsername($username){
+    global $db;
+    $safe_username = mysqli_real_escape_string($db, $username);
+
+    $query = "SELECT * ";
+    $query .= "FROM admins ";
+    $query .= "WHERE username = '{$safe_username}' ";
+    $query .= "LIMIT 1";
+    $admin_set = mysqli_query($db, $query);
+    ConfirmQuery($admin_set);
+    if ($admin = mysqli_fetch_assoc($admin_set)) {
+      return $admin;
+    } else { 
+      return null;
+    }
+}
+function AttemptLogin($username, $password) {
+      $found_admin = FindAdminByUsername($username);
+      if ($found_admin) {
+        if (PasswordCheck($password, $found_admin["hashed_password"])){
+          return $found_admin;
+        } else {
+          return false;
+        }
+      } else {
+          return false;
+      }
+} 
+
+function LoggedIn(){
+  return isset($_SESSION["admin_id"]);
+}
+
+function ConfirmLoggedIn(){
+  if (!LoggedIn()){
+      RedirectTo("admin_login.php");
+  }
+}
+
+function AdminNavigation(){
+                  $output = "<nav class=\"admin-panel\"><ul><li>";
+                  $output .= "<a title = \"Website Content\" href=\"../public/manage_content.php\">Website Content</a>";
+                  $output .= "</li>";
+                  $output .= "<li>";
+                  $output .= "<a title = \"Admins\" href=\"../public/manage_admin.php\">Admins</a>";
+                  $output .= "</li>";
+                  $output .= "<li>";
+                  $output .= "<a title = \"LogOut\" href=\"../public/admin_logout.php\">Log out</a>";
+                  $output .= "</li></ul></nav>";
+
+                 if (LoggedIn()) {
+                    return $output;
+                 }
+}
+
+
 ?>
 
