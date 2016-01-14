@@ -1,0 +1,837 @@
+﻿/*Css screen*/
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,700,700italic);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #555; 
+  margin: 0;
+  padding: 0;
+}
+
+#page {
+    width: 100%;
+    margin:  0 auto;
+    position: relative;
+}
+
+#page ul {
+    list-style: none;
+}
+
+a.btn {
+  font-size: 1.2em;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 4px 15px;
+  transition: background-color .5s;
+}
+
+a.btn:hover {
+  background-color: rgba(0, 0, 0, .3);
+}
+
+/*Text*/
+
+h1 {
+  margin: 0 0 1em 0;
+  font-size: 3.2em; font-weight: 700;
+}
+
+h2 {
+  margin: 0 0 .5em 0;
+  font-size: 1.6em; font-weight: 700;
+  line-height: 1.1em;
+}
+
+h3 {
+  margin: 0 0 .5em 0;
+  font-size: 1.3em; font-weight: 700;
+}
+
+h4 {
+  margin: 0 0 1.5em 0;
+  font-size: 1em; 
+  font-weight: bold;
+}
+
+p { margin: 0 0 1em 0;}
+
+a { color: #007eff; }
+
+/*Header*/
+
+header { 
+    height: 540px;
+    /*background: #cf0004 url(../img/banner_1200.jpg) repeat center bottom; */
+     position: relative;
+     background: #c10000 url(../img/bg1.png) repeat center bottom;
+}
+
+header.admin {
+  height: 150px;
+}
+
+header a.logo {
+  z-index: 1;
+  position: absolute;
+  display: block;
+  width: 160px;
+  height: 66px;
+  background: url(../img/logo.png) no-repeat 0 0;
+  background-size:  contain;
+  top: 15px;
+  left: 20px;
+}
+
+header a.logo span { display: none}
+
+header div.hero {
+  position:  absolute;
+  width: 42%;
+  top: 130px;
+  left: 55%;
+}
+
+header.admin div.hero {
+  position:  absolute;
+  width: 30%;
+  top: 70px;
+  left: 40%;
+}
+
+header div.hero h1{
+  line-height: 1em;
+  margin: 0 0 30px 0;
+  color: #fff;
+}
+
+/*Section - All*/
+
+section {
+  padding: 0 30px;
+}
+
+section::after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+/*Section - main */
+
+section.main {
+  margin: 10px 0 40px 0;
+  padding: 0;
+}
+
+section.main aside {
+  width: 33%;
+  float: left;
+  text-align: center;
+}
+
+section.main .content {
+    margin: 15px;
+    background: no-repeat center top;
+    background-size: 75px 75px;
+    padding-top: 85px;
+}
+
+section.main .content h3 a {
+  color: #000;
+  text-decoration: none;
+}
+
+section.main aside h3 a:hover {
+  text-decoration: underline;
+}
+
+section.main aside h3 a:visited {color: #000; }
+
+section.main aside .content.stratagy {
+  background-image: url(../img/icon_star.svg);
+}
+
+section.main aside .content.community {
+  background-image: url(../img/icon_gear.svg);
+}
+
+section.main aside .content.tools {
+  background-image: url(../img/icon_marker.svg);
+}
+
+
+/*Section - atmosphere */
+
+section.atmosphere {
+  background-color: #e1dede;
+/*  background-color: #ff4c4c ;*/
+  padding-top: 70px;
+  padding-bottom: 40px;
+  color: #555;
+}
+
+section.atmosphere a.btn {
+  color: #cc6633;
+  font-weight: bold;
+  border-color: #cc6633;
+}
+
+section.atmosphere article  {
+      padding: 0 20px 0 515px;
+      background: url(../img/photo_lounge.jpg ) no-repeat center left;
+      min-height: 220px;
+}
+
+
+/*Section - how-to */
+
+section.how-to {
+  background-color: #e1dede;
+  /*background-color: #eee9d9;*/
+  padding-top: 30px;
+  padding-bottom: 80px;
+  position: relative;
+}
+
+section.how-to aside  {
+  width: 30%;
+  float: left;
+  text-align: left;
+  margin-right: 27px
+}
+
+section.how-to aside .content img {
+  display: block;
+  margin-bottom: 15px;
+  width: 85%;
+}
+ section.how-to aside .content  h4{
+    margin-bottom: 0;
+ }
+  section.how-to aside .content  p{
+    margin-bottom: .5em;
+ }
+  section.how-to aside .content  a{
+    display: inline-block;
+    color: #cc6633;
+    font-weight: bold;
+  }
+
+  section.how-to blockquote {
+    margin:  0;
+    background-color: #fff;
+    color: #444;
+    width: 32%;
+    position: absolute;
+    bottom: 0;
+    right: 4%;
+  }
+
+section.how-to blockquote p {
+    margin: 30px 30px 20px 50px;
+}
+
+section.how-to blockquote p.quote {
+    font-style: italic;
+    font-size: 1.2em; 
+}
+
+section.how-to blockquote p.credit {
+    color: #777;
+    font-size: .9em;
+    margin-top: 0;
+    padding-left: 20px;
+    line-height: 1.3em;
+    position: relative; 
+}
+
+
+section.how-to blockquote::before {
+  content: "\201c";
+  color: #d2bd65;
+  position: absolute;
+  top: 10px;
+  left: 8px;
+  font-size: 5em;
+  font-family:  serif; 
+}
+
+section.how-to blockquote p.quote::after {
+  content: "\201d";
+  color: #444;
+  font-family:  serif; 
+}
+
+section.how-to blockquote p.credit::before {
+  content: "\2014";
+  position: absolute;
+  top: -1px;
+  left: 0;
+}
+
+
+/*Section Inside */
+
+section.inside {
+  background-color: #fff;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+section.inside article  {
+      padding: 0 20px 0 0;
+      min-height: 620px;
+}
+
+section.inside article h2 {
+  font-size: 2.4em;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+section.inside article p {
+  font-size: 1.1em;
+  margin-bottom: 40px;
+}
+
+section.inside article img {
+  padding: 0 30px 15px 40px;
+}
+
+/*Navigation*/
+
+section.all-subj-menu {
+    padding: 0 0;
+    float: left;
+    width: 300px; height: 690px;
+    background-color: rgba(103,103,103, .1);
+    padding: 10px 10px;
+    margin-right: 25px;
+}
+
+section.all-subj-menu div ul li a {
+  text-decoration: none;
+  color: #555;
+}
+
+section.all-subj-menu div ul li a:hover {
+  text-decoration: underline;
+}
+
+section.page-cont div {
+ vertical-align: top;
+ height: auto;
+}
+
+section.page-cont div  a{
+   text-decoration: none;
+   color: #555;
+}
+
+section.page-cont div  a:hover{
+   text-decoration: underline;
+}
+
+ul.pages {font-weight: normal;}
+.selected {font-weight: bold;}
+
+nav {
+  background-color: rgba(103,103,103, .5);
+  position: absolute;
+  top: 0; 
+  left: 0px;
+  padding: 50px 0 0 0;
+  width: 100%;
+}
+
+nav.admin-panel {
+  padding: 20px 0 0 0;
+}
+
+nav.admin-panel >ul {
+  padding-left: 75%;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+
+nav ul li:hover {
+  background-color: #2b0306;
+}
+nav ul li:hover > ul {
+  display: block;
+}
+
+nav ul li a {
+  display: inline-block;
+  color: #fff;
+  padding: 10px 20px;
+  width: 125px;
+  position: relative;
+  text-decoration: none;
+}
+
+nav ul ul li a {
+  width: auto;
+}
+
+
+nav::after { 
+  content: ' '; 
+  display: block; 
+  clear: both;
+}
+
+nav ul li a:visited { color: #fff; }
+
+nav ul li a:hover { background-color: #6d0911; }
+
+nav ul ul {
+  position: absolute;
+  top: 100%;
+  background-color: #2b0306;
+  display: none;
+}
+
+nav ul ul li {
+  position: relative;
+}
+
+nav ul ul li {
+  position: relative;
+}
+
+
+nav ul ul ul {
+  left: 100%;
+  top: 0px;
+}
+
+/*top-level*/
+
+nav > ul { padding-left: 200px; }
+
+
+nav > ul > li { float: left; }
+
+nav > ul > li > a { 
+  width: auto;
+  padding: 10px 20px 15px 10px;
+}
+
+nav > ul > ul > li > a { 
+  width: auto;
+}
+
+nav a[area-haspopup = "true"]::after {
+  content: ' ';
+  display: block;
+  width: 0px; height: 0px;
+  position: absolute;
+  top: 16px; right: 15px;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left:  4px solid #fff;
+}
+
+
+nav > ul > li > a[area-haspopup = "true"]::after {
+  border-top: 4px solid #fff;
+  border-left:  4px solid transparent;
+   border-right:  4px solid transparent;
+   left: 20px; right:  auto;
+   bottom: 6px; top: auto;
+}
+
+/*New subject page*/
+
+div.message {
+  color: #8D0D19; font-weight: bold;
+  padding: 1em;
+  display: block;
+}
+
+div.error {
+  border: 2px solid #8D0D19;
+  color: #8D0D19;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+/*Manage admin users page*/
+
+table {
+    margin-top: 30px;
+    width: 70%; 
+    background: #fff; 
+    color: #555; 
+    border-spacing: 1px; 
+   }
+   td, th {
+    padding: 5px; 
+   }
+
+    th {
+      text-align: left;
+    }
+
+/*Footer*/
+
+footer {
+  font-size:  .8em;
+  margin: 40px;
+  color:  #999;
+}
+
+footer  {
+  font-size: .8em;
+  margin: 40px;
+  color: #999;
+}
+
+footer .content {
+  display: inline;
+}
+
+footer a {
+  margin-left: 30px;
+  color:  #777;
+}
+
+footer a:visited {
+  color:  #777;
+}
+
+footer a:hover {
+  color:  #000;
+}
+
+
+
+
+/*Media Queries */
+
+@media screen and (max-width: 1000px) {
+      h1 { font-size:  2.7em; }
+
+  /*header */
+
+    header {
+    height: 450px;
+    /*background-image: url(../img/banner_825.jpg);*/
+  }
+
+  header div.hero { left:  56%; top: 34%; }
+  header div.hero h1 { margin-bottom: 15px; }
+
+  /*Section Atmosphere */
+
+  section.atmosphere article {
+    padding-left: 400px; 
+    background-size: 375px auto;
+  }
+
+    nav > ul { padding-left: 15px; }
+
+
+/*Meda query for 830px */
+
+@media screen and (max-width: 830px) {
+      h1 { font-size:  2.2em; }
+
+  /*header */
+
+  header {
+    height: 300px;
+    /*background-image: url(../img/banner_825.jpg);*/
+  }
+    
+header div.hero { left:  53%;  top: 43%;}
+
+
+  /*Section Atmosphere */
+    section.atmosphere article {
+    padding-left: 325px; 
+    background-size: 300px auto;
+  }
+
+  section.how-to blockquote p.quote {font-size: 1.1em; line-height: 1.2em;}
+  section.how-to blockquote p.credit {font-size: .8em; }
+
+  /*Section Nav */
+  nav { padding-top: 40px; }
+  nav > ul { padding-left: 15px; }
+
+}
+
+
+/*Meda query for 800px */
+
+@media screen and (max-width: 800px) {
+
+      h1 { font-size:  1.8em; }
+      h2 { font-size:  1.4em; }
+      h3 { font-size:  1.1em; }
+      h4 { font-size:  1em; }
+      a.btn {font-size: .8em;}
+
+/*header */
+      header a.logo { width: 140px; height: 60px; }
+      header div.hero {top: 140px; left: 48%; }
+
+/*Section Main */
+
+      section.main { margin-top: 10px; margin-bottom: 10px; }
+       section.main aside div.content {background-size: 55px 55px; padding-top: 60px; }
+
+/*Section How-To */
+      section.how-to aside div.content img { width: 85% }
+
+/*Nav  */
+  nav { padding-top: 40px; }
+  nav > ul { padding-left: 15px; }
+
+    }     
+
+
+/*Meda query for 730px */
+
+@media screen and (max-width: 730px) {
+
+      h1 { font-size:  1.8em;}
+      h3 { margin-bottom:  0px; }
+      a.btn {font-size: 1em;}
+
+
+      header  {
+        height: 240px;
+        background-position: left top;
+      }
+
+
+      /*Nav  */
+  nav { 
+    position: static;
+    width: auto;
+    padding: 20px 15px;
+    background-color: #4b0a0c;
+   }
+  
+   header a.logo { 
+    width: 100%; height: 66px; 
+    left: 0px; top: 0px;
+    background-color: rgba(0, 0, 0, .65);
+    background-size: 112px  46px;
+    background-position: 20px center;
+  }
+
+    header div.hero {
+    position:  absolute;
+    width: 300px;
+    top: 85px;
+    left: 190px;
+}
+
+   header div.hero  h1 { margin-bottom: 10px;  }
+
+/*Section main */
+
+  section.main {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+section.main aside {
+  width: 100%;
+  float: none;
+  text-align: left;
+}
+
+section.main aside div.content {
+  padding-top: 25px;
+}
+
+section.main div.content {
+    margin: 0 20px 20px 0;
+    padding-left:   85px;
+    background-size: 20px 5px;
+    background-position: left;
+}
+
+  /*Section Atmosphere */
+
+section.atmosphere article  {
+      padding: 160px 20px 0 60px;
+      background: url(../img/photo_lounge.jpg ) no-repeat center top;
+      min-height: initial;
+      background-size: 300px auto;
+}
+
+/*Section - how-to */
+section.how-to {
+  padding-bottom: 0px;
+}
+
+section.how-to aside  {
+  width: 100%;
+  float: none;
+  text-align: left;
+  margin: 0;
+  position: relative;
+}
+
+section.how-to aside div.content  {
+    padding: 20px 20px 20px 150px;
+}
+
+section.how-to aside div.content p  {
+    font-size: .9em;
+}
+
+section.how-to aside div.content img {
+  display: inline-block;
+  position: absolute;
+  width: 125px;
+  top: 30px;
+  left: 0px;
+}
+
+section.how-to blockquote {
+   position: relative;
+   width: 90%;
+   left: 20px;
+   padding: 1px 0px 20px 0px;
+}
+
+  section.how-to blockquote p {
+  margin-bottom: 0;
+}
+
+section.inside article img {
+  width: 330px;
+  margin-left: 100px;
+}
+
+/*Navigation*/
+
+   nav { 
+    position: static;
+    width: auto;
+    padding: 20px 15px;
+    background-color: #4b0a0c;
+     }
+
+   nav > ul { padding: 0; }
+   nav > ul > li { float: none; margin-top: 25px; }
+
+   nav ul,
+   nav ul ul,
+   nav ul ul ul {
+    display: block;
+    position: static;
+   }
+
+   nav ul li:hover { background: none;}
+
+   nav ul li a {
+    display: block;
+    margin: 8px 10px;
+    border: 1px solid rgba(255, 244, 255, .25);
+   }
+
+   nav ul li a:hover  {
+    background-color: rgba(255, 244, 255, .2);
+   }
+
+    nav ul ul {background:  none;}
+    nav ul ul li a {margin-left:  30px;}
+    nav ul ul ul li a {margin-left:  60px;}
+
+    nav a[area-haspopup = "true"]::after { display: none;}
+
+    /*Footer */
+
+    footer div.content {display: block; margin-top: 15px;}
+    footer div.content a {margin: 0px 20px 0px 0px;}
+    }
+
+/*Meda query for 460px */
+
+@media screen and (max-width: 460px) {
+
+
+/*Header */
+    header {
+    height: 140px; 
+    font-size:  .7em;
+/*    background-image: url(../img/banner_425.jpg); */
+  }
+
+    header a.logo { 
+    height: 36px; 
+    background: rgba(0, 0, 0, .65) url(../img/logo_small.png) no-repeat center;
+   }
+
+   header div.hero {
+   position:  absolute;
+   width: 300px;
+   top: 53px;
+   left: 25%;
+}
+
+    header div.hero  a.btn{
+    font-size: 1em;
+ }
+
+/*Section how-to */
+
+section.how-to aside div.content  {
+    padding: 140px 20px 20px 0px;
+}
+
+section.how-to aside div.content img { width: auto; height: 100px; top: 30px;}
+
+section.how-to blockquote { margin: 10px 40px 0px 20px;}  
+}
+
+section div.content-area {
+      height: 100%;
+      width: 600px;
+      position: relative;
+      display: block;
+
+}
+
+section div.menu-area {
+      height: 100%;
+      width: 150px;
+      float:left;
+      position: absolute;
+      display: block;
+}
+
+section.inside article img {
+  width: 230px;
+  margin-left: 0px;
+}
+
+/*Footer*/
+
+footer::after {
+  content: ' '; 
+  display: block;
+  clear: both;
+}
+footer div.content a {display: inline-block; margin: 0px 0px 10px 0px; float: left; clear: both;}
+
+}
+
