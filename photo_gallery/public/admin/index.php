@@ -1,10 +1,9 @@
-<?php require_once ("../includes/session.php"); ?>
-<?php require_once ("../includes/db_connect.php"); ?>
-<?php require_once ("../includes/functions.php"); ?>
-<?php ConfirmLoggedIn(); ?>
+<?php 
+require_once ("../../includes/initialize.php");
+IncludeLayout("admin-header.php");
+?>
 
-<?php $context = "admin"; ?>
-<?php include ("../includes/layouts/admin-header.php");?>
+<?php if (!$session->IsLoggedIn()) { RedirectTo("login.php"); }?>
 
 <section class="all-subj-menu">
   <div>
@@ -28,13 +27,8 @@
 
 <section  class="page-cont">
              <div>
-             <h2>Welcome, <?php echo htmlentities($_SESSION['username']);?></h2>
+             <h2>Welcome,</h2>
             </div>
             </section>
 
-<?php include ("../includes/layouts/footer.php"); ?>
-
-
-
-
-
+<?php IncludeLayout("footer.php"); ?>
