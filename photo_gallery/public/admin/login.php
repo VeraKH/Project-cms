@@ -7,11 +7,11 @@ if ($session->IsLoggedIn()) {RedirectTo("index.php"); }
 if (isset($_POST["submit"])) {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
-
     $found_user = User::Authenticate($username, $password);
 
     if ($found_user) {
       $session->LogIn($found_user);
+      $log_file->WriteLog($username, "has logged in");
       RedirectTo("index.php");  
     } else {
       echo "wrong";
@@ -40,7 +40,7 @@ if (isset($_POST["submit"])) {
                    <input type="submit" name="submit" value="Log in" />
                    </form>
               </div>
-            </section>
+    </section>
 
 <?php include("../../includes/layouts/footer.php"); ?>
 <?php if(isset($database)) { $database->CloseConnection(); } ?>

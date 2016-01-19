@@ -81,7 +81,6 @@ IncludeLayout("head.php");
                    echo $user->UsernamePassword();
                    echo "<br/>";
             } 
-
  ?>
                      
 

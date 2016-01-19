@@ -39,6 +39,18 @@ private function HasAttribute($attribute){
       return array_key_exists($attribute, $object_vars);
 }
 
+public function create(){
+
+}
+
+public function update(){
+  
+}
+
+public function delete(){
+  
+}
+
 }
 
 

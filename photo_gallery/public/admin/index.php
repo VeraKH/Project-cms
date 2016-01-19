@@ -3,10 +3,13 @@ require_once ("../../includes/initialize.php");
 IncludeLayout("admin-header.php");
 ?>
 
-<?php if (!$session->IsLoggedIn()) { RedirectTo("login.php"); }?>
+<?php if (!$session->IsLoggedIn()) { 
+  RedirectTo("login.php"); } 
+  ?>
 
 <section class="all-subj-menu">
   <div>
+  <ul><li><a href="logs_view.php">Logs view</a></li></ul>
   <ul><li><a href="admin.php">&laquo; News</a></li></ul>
                 <ul>
                     <li>

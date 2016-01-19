@@ -30,8 +30,8 @@ function __autoload($class_name){
     }
 }
 
-function IncludeLayout($tamplate=""){
-  include(SITE_ROOT.DS."layouts".DS.$tamplate);
+function IncludeLayout($include_file){
+      include(LIB_PATH.DS."layouts".DS.$include_file);
 }
 
 
