@@ -9,29 +9,24 @@ IncludeLayout("admin-header.php");
 
 <section class="all-subj-menu">
   <div>
+  <ul><li><a href="manage_admin.php">Manage admins</a></li></ul>
   <ul><li><a href="logs_view.php">Logs view</a></li></ul>
-  <ul><li><a href="admin.php">&laquo; News</a></li></ul>
-                <ul>
-                    <li>
-                        <a title = "January" href="#">January</a>
-                    </li>
-                    <li>
-                        <a title = "February" href="#">February</a>
-                    </li>
-                     <li>
-                        <a title = "March" href="#">March</a>
-                    </li>
-                     <li>
-                        <a title = "April" href="#">April</a>
-                    </li>
-                </ul>
+  <ul><li><a href="index.php?logout=true">Log out</a></li></ul>
   </div>
 </section>
 
 <section  class="page-cont">
              <div>
-             <h2>Welcome,</h2>
+             <h2>Welcome, <?php echo $session->user_id; ?></h2>
+              <?php echo $session->Message(); ?>
             </div>
             </section>
+
+<?php 
+  if ($_GET['logout']=='true') { 
+  $session->Logout();
+  RedirectTo("login.php"); 
+} 
+?>
 
 <?php IncludeLayout("footer.php"); ?>

@@ -1,6 +1,5 @@
 <?php 
 
-
 class Session {
     private $logged_in = false;
     public $user_id;
@@ -28,7 +27,7 @@ function LogIn($user){
 function LogOut(){
     unset($_SESSION["user_id"]);
     unset($this->user_id);
-    $this->logged_in = афдыу;
+    $this->logged_in = false;
  }
 
 function CheckLogin(){
@@ -40,6 +39,17 @@ function CheckLogin(){
             $this->user_id = false;
         }
  }
+
+ function Message(){
+              if (isset($_SESSION["message"])) {
+                  $output = "<div class = \"message\">";
+                  $output .= htmlentities($_SESSION["message"]);
+                  $output .= "</div>";
+
+                  $_SESSION["message"] = null;
+                  return $output;
+              }
+}    
 
 }
   

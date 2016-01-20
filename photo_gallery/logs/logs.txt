@@ -1,1 +1,4 @@
-18/01/2016 14:54 : User ID 1 has cleared the log file 
+19/01/2016 11:41 : User ID 1 has cleared the log file 
+19/01/2016 11:41 : kskoglund has logged in
+19/01/2016 12:54 : Vera has logged in
+19/01/2016 13:49 : Vera has logged in
