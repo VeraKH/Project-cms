@@ -11,6 +11,7 @@ require_once (LIB_PATH.DS."session.php");
 require_once (LIB_PATH.DS."database.php");
 require_once (LIB_PATH.DS."databaseObject.php");
 require_once (LIB_PATH.DS."user.php");
+require_once (LIB_PATH.DS."photograph.php");
 require_once (LIB_PATH.DS."log.php");
 ?>
 

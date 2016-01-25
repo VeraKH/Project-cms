@@ -4,9 +4,9 @@ require_once ("../../includes/initialize.php");
 
 
 if (isset($_POST["submit"])) {
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
-    $user->Create($username, $password);
+    $user->username = trim($_POST['username']);
+    $user->password = trim($_POST['password']);
+    $user->Create();
 }
 
 ?>
