@@ -8,7 +8,11 @@ require_once ("../../includes/initialize.php");
     redirect_to("manage_admin.php");
   } else {
     $user->id = $_GET['id'];
-    $user->Delete();
+    if ($user->Delete()) {
+    RedirectTo("manage_admin.php");
+    } else {
+    RedirectTo("edit_admin.php?id=".$user->id);		
+    }
     }
 ?>
 

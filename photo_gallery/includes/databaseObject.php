@@ -3,7 +3,12 @@ require_once(LIB_PATH.DS."database.php");
 
 class DatabaseObject {
 
-    public static function FindBySql($sql="") {
+protected static $table_name;
+protected static $field_name;
+protected static $db_fields;
+
+
+public static function FindBySql($sql="") {
        global $database;
        $result_set = $database->Query($sql);
        $object_array = array();
@@ -14,7 +19,7 @@ class DatabaseObject {
 }
 
 public static function FindAll(){
-      return static::FindBySql("SELECT * FROM ".static::$table_name ." ORDER BY ".static::$field_name. " ASC");
+     return static::FindBySql("SELECT * FROM ".static::$table_name ." ORDER BY ".static::$field_name. " ASC");
 }
 
 public static function FindById($id=0) {
@@ -41,7 +46,7 @@ private function HasAttribute($attribute){
 
 protected function Attributes(){
       $attributes = array();
-      foreach (self::$db_fields as $field) {
+      foreach (static::$db_fields as $field) {
         if (property_exists($this, $field)) {
           $attributes[$field]=$this->$field;
         }
@@ -59,47 +64,41 @@ protected function SanitizedAttributes() {
 } 
 
 public function Create(){
-global $database;
+ global $database;
 $attributes = $this->Attributes();
 
-     $query = "INSERT INTO ". self::$table_name." (";
-     $query .= join(", " , array_keys($attributes);
+     $query = "INSERT INTO ". static::$table_name." (";
+     $query .= join(", " , array_keys($attributes));
      $query .= ")  VALUES (' ";
-     $query .= join("', '" , array_values($attributes);
+     $query .= join("', '" , array_values($attributes));
      $query .= " ')";
-            $result = $database->Query($query);
-             if ($result) {
-               $this->id = $database->InsertId();
-                RedirectTo("index.php");
-            } else {
-                RedirectTo("new_user.php");
-            } 
+            return $result = $database->Query($query);
 }
 
 public function Update(){
      global $database;
 
-     $attributes = $this->$sanatized_attributes();
+     $attributes = $this->SanitizedAttributes();
      $attributes_pairs = array();
      foreach ($attributes as $key => $value) {
        $attributes_pairs[] = "{$key} = '{$value}' ";
      }
 
      $query = "UPDATE ". self::$table_name." SET ";
-     $query .= join(", " $attributes_pairs);
+     $query .= join(", ", $attributes_pairs);
      $query .= " WHERE id=" . $database->EscapeValue($this->id);
  
      $database->Query($query);
-      return($database->AffectedRows()==1) ?  RedirectTo("manage_admin.php") : RedirectTo("edit_admin.php?id=".$this->id);
+      return($database->AffectedRows()==1) ?  true :  false;
 }
 
 public function Delete(){
       global $database;
-      $query = "DELETE FROM " . self:: $table_name;
+      $query = "DELETE FROM " . static:: $table_name;
       $query .= " WHERE id=" . $database->EscapeValue($this->id);
       $query .= " LIMIT 1";
       $database->Query($query);
-      return($database->AffectedRows()==1) ?  RedirectTo("manage_admin.php") : RedirectTo("edit_admin.php?id=".$this->id);
+      return($database->AffectedRows()); 
 }
 
 }

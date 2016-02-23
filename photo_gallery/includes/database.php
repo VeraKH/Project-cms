@@ -9,7 +9,7 @@ class MySQLDatabase {
   }
 
   public function OpenConnection(){
-        $this->db = @mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+        $this->db = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
        if (mysqli_connect_errno()) {
         die ("Database connection failed: "  . 
@@ -24,19 +24,19 @@ class MySQLDatabase {
          die ("Database query failed");
        }
   }
-  
-  public function CloseConnection() {
-        if (isset($this->db)) {
-        mysqli_close($this->db);
-        unserialize($this->db);
-          }
-  }
 
   public function Query($query){
             $result = mysqli_query($this->db, $query);
             $this->ConfirmQuery($result);
             return $result;
     }
+
+      public function CloseConnection() {
+        if (isset($this->db)) {
+        mysqli_close($this->db);
+        unserialize($this->db);
+          }
+  }
 
   public function EscapeValue($string) {
             $escaped_string = mysqli_real_escape_string($this->db, $string);
@@ -67,6 +67,6 @@ class MySQLDatabase {
 }
 
 $database = new MySQLDatabase();
-$db = & $database // and the way to call by reference
+// $db = & $database  // and the way to call by reference
 
 ?>

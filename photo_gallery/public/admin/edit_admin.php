@@ -12,8 +12,14 @@ require_once ("../../includes/initialize.php");
     $user->id = $_GET['id'];
     $user->username = trim($_POST['username']);
     $user->password =trim($_POST['password']);
-    $user->Update();
-    }
+    if($user->Update()){
+         $user->RedirectTo("manage_admin.php");
+     } else {
+         $user->RedirectTo("edit_admin.php?id=".$user->id);
+      }
+
+      } 
+
 ?>
 
 

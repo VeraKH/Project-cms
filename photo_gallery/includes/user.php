@@ -7,7 +7,7 @@ class User extends DataBaseObject {
   protected static $field_name="username";
   protected static $db_fields=array('id', 'username', 'password');
 
-  public $id;  
+  public  $id = "";  
   public $username;
   public $password; 
 
@@ -28,6 +28,24 @@ public function UsernamePassword(){
   } else {
     return "what are you looking for??";
   }
+}
+
+
+public function Update(){
+     global $database;
+
+     $attributes = $this->SanitizedAttributes();
+     $attributes_pairs = array();
+     foreach ($attributes as $key => $value) {
+       $attributes_pairs[] = "{$key} = '{$value}' ";
+     }
+
+     $query = "UPDATE ". self::$table_name." SET ";
+     $query .= join(", ", $attributes_pairs);
+     $query .= " WHERE id=" . $database->EscapeValue($this->id);
+ 
+     $database->Query($query);
+      return($database->AffectedRows()==1) ?  RedirectTo("manage_admin.php") : RedirectTo("edit_admin.php?id=".$this->id);
 }
 
 }

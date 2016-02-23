@@ -6,8 +6,13 @@ require_once ("../../includes/initialize.php");
 if (isset($_POST["submit"])) {
     $user->username = trim($_POST['username']);
     $user->password = trim($_POST['password']);
-    $user->Create();
-}
+    $user->id = $database->InsertId();
+    if($user->Create()){
+                $user->RedirectPath("index.php");
+            } else {
+                $user->RedirectPath("new_user.php");
+            } 
+    }
 
 ?>
 
