@@ -12,6 +12,7 @@ IncludeLayout("admin-header.php");
   <ul><li><a href="manage_admin.php">Manage admins</a></li></ul>
   <ul><li><a href="logs_view.php">Logs view</a></li></ul>
    <ul><li><a href="photo_upload.php">Upload photo</a></li></ul>
+    <ul><li><a href="photo_view.php">View photo</a></li></ul>
   <ul><li><a href="index.php?logout=true">Log out</a></li></ul>
   </div>
 </section>

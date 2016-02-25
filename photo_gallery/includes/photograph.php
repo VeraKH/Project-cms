@@ -4,6 +4,7 @@ require_once("database.php");
 class Photograph extends DataBaseObject {
 
   protected static $table_name="photographs";
+  protected static $field_name="filename";
   protected static $db_fields=array('id', 'filename', 'type', 'size', 'caption');
 
   public $id;  
@@ -80,7 +81,21 @@ public function AttachFile($file){
       }
     }
 
- 
+    public function ImagePath(){
+        return $this->upload_dir .DS. $this->filename;
+   }
+
+   public function SizeAsText(){
+    if ($this->size < 1024) {
+      return "{$this->size} bytes";
+    } elseif ($this->size < 1048576) {
+       $size_kb = round($this->size/1024);
+         return $size_kb." KB";
+    } else {
+       $size_mb = round($this->size/1048576, 1);
+       return $size_mb." MB";
+    }
+   }
   }
 
 ?>
