@@ -4,13 +4,11 @@ require_once ("../../includes/initialize.php");
 
  if (!$session->IsLoggedIn()) { 
   RedirectTo("login.php"); } 
-
 ?>
-<section class="all-subj-menu">
-  <div>
-   <ul><li><a class="btn" ttitle="Clear log file" href="logs_view.php?clear=true">Clear log file</a><li/></ul>
-  </div>
-</section>
+
+<?php 
+IncludeLayout("left-menu.php");
+?>
 
 <section  class="page-cont">
              <div>

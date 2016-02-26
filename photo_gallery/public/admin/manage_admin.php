@@ -6,12 +6,7 @@ if (!$session->IsLoggedIn()) {
   RedirectTo("login.php"); } 
 ?>
 
-
-<section class="all-subj-menu">
-  <div>
-
-  </div>
-  </section>
+<?php IncludeLayout("left-menu.php");?>
 
     <section  class="page-cont">
              <div>

@@ -12,8 +12,8 @@ function RedirectTo($new_location){
   exit;
 }
 
-function Messages(){
-              if (!empty($message="")) {
+function Messages($message=""){
+              if (!empty($message)) {
                   return "<p class=\"message\">{$message}</p>";
               } else {
                 return "";

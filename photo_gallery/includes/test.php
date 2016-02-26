@@ -1,15 +1,8 @@
 <?php 
-      $id = 2;
-      $password=1;
-      $id=2;
-      $username = "hello";
-
-
-     $query = "UPDATE users SET ";
-     $query .= "username= '" .$username. "', ";
-     $query .= "password= '" .$password. "' ";
-     $query .= "WHERE id=" . $id;
-     echo $query;
-  
+require_once ("../../includes/initialize.php");
+if ($_SERVER['SCRIPT_FILENAME'] == SITE_ROOT.DS."public".DS."admin".DS."logs_view.php"){
+	
+   echo  "<div><ul><li><a class=\"btn\" ttitle=\"Clear log file\" href=\"logs_view.php?clear=true\">Clear log file</a><li/></ul></div>";
+}
 
 ?>

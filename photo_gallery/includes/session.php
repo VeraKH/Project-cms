@@ -3,9 +3,11 @@
 class Session {
     private $logged_in = false;
     public $user_id;
+    public $message;
 
 function __construct() {
       session_start();
+      $this->CheckMessage();
       $this->CheckLogin();
         if($this->logged_in) {
     } else {
@@ -51,8 +53,27 @@ function CheckLogin(){
               }
 }    
 
+ public function SetMessage($msg=""){
+        if (!empty($msg)) {
+         $_SESSION["message"] = $msg; 
+        } else {
+          return $this->message;
+        }
+}    
+
+
+public function CheckMessage() {
+         if (isset($_SESSION["message"])) {
+          $this->message = htmlentities($_SESSION["message"]);
+          unset($_SESSION["message"]);
+          } else {
+            $this->message = "";
+          }
+}
+
 }
   
 $session  = new Session();
+$message = $session->SetMessage();
 
 ?>

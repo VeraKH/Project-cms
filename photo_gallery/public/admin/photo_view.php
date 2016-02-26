@@ -5,9 +5,13 @@ require_once ("../../includes/initialize.php");
  if (!$session->IsLoggedIn()) { RedirectTo("login.php");  } 
 
  ?>
+
+ <?php IncludeLayout("left-menu.php");?>
+ 
 <section  class="page-cont">
              <div>
              <h2>Photo view</h2>
+             <?php echo Messages($message); ?>
 
                           <table>
                <tr>   
